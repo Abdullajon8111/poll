@@ -8,7 +8,7 @@
 
     @yield('before_styles')
     @stack('before_styles')
-    
+
     @if (config('backpack.base.styles') && count(config('backpack.base.styles')))
         @foreach (config('backpack.base.styles') as $path)
         <link rel="stylesheet" type="text/css" href="{{ asset($path).'?v='.config('backpack.base.cachebusting_string') }}">
@@ -20,6 +20,15 @@
         <link rel="stylesheet" type="text/css" href="{{ mix($path, $manifest) }}">
         @endforeach
     @endif
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Nunito');
+        body {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 200;
+        }
+
+    </style>
 
     @yield('after_styles')
     @stack('after_styles')

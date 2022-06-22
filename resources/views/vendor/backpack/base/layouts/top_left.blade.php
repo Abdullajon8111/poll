@@ -4,7 +4,6 @@
 
 <head>
   @include(backpack_view('inc.head'))
-
 </head>
 
 <body class="{{ config('backpack.base.body_class') }}">
@@ -30,7 +29,7 @@
           @yield('before_content_widgets')
 
           @yield('content')
-          
+
           @yield('after_content_widgets')
 
         </div>
