@@ -30,6 +30,8 @@ class SurveyCrudController extends CrudController
     {
         CRUD::column('name');
         CRUD::column('enabled')->type('boolean');
+        CRUD::column('accept_guest_entries')->type('boolean');
+        CRUD::column('limit_per_participant');
         CRUD::column('expired')->type('date');
     }
 
@@ -39,6 +41,8 @@ class SurveyCrudController extends CrudController
 
         CRUD::field('name')->type('text');
         CRUD::field('enabled')->type('toggle');
+        CRUD::field('accept_guest_entries')->type('toggle');
+        CRUD::field('limit_per_participant')->type('number');
         CRUD::field('expired');
     }
 

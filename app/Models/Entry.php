@@ -3,12 +3,34 @@
 namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User;
 use App\Contracts\Entry as EntryContract;
 use App\Exceptions\GuestEntriesNotAllowedException;
 use App\Exceptions\MaxEntriesPerUserLimitExceeded;
 
+/**
+ * App\Models\Entry
+ *
+ * @property int $id
+ * @property int $survey_id
+ * @property int|null $participant_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Answer[] $answers
+ * @property-read int|null $answers_count
+ * @property-read User|null $participant
+ * @property-read \App\Models\Survey|null $survey
+ * @method static \Illuminate\Database\Eloquent\Builder|Entry newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Entry newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Entry query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Entry whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Entry whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Entry whereParticipantId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Entry whereSurveyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Entry whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Entry extends Model implements EntryContract
 {
     use CrudTrait;
@@ -81,10 +103,10 @@ class Entry extends Model implements EntryContract
     /**
      * Set the participant who the entry belongs to.
      *
-     * @param  Model|null  $model
+     * @param  Model|Authenticatable|null  $model
      * @return $this
      */
-    public function by(Model $model = null)
+    public function by($model = null): Entry
     {
         $this->participant()->associate($model);
 
@@ -97,14 +119,14 @@ class Entry extends Model implements EntryContract
      * @param  array  $values
      * @return $this
      */
-    public function fromArray(array $values)
+    public function fromArray(array $values): Entry
     {
         foreach ($values as $key => $value) {
             if ($value === null) {
                 continue;
             }
 
-            $answer_class = get_class(app()->make(Answer::class));
+            $answer_class = Answer::class;
 
             if (gettype($value) === 'array') {
                 $value = implode(', ', $value);
@@ -139,7 +161,7 @@ class Entry extends Model implements EntryContract
      *
      * @return bool
      */
-    public function push()
+    public function push(): bool
     {
         $this->save();
 

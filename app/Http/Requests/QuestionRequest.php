@@ -18,7 +18,7 @@ class QuestionRequest extends FormRequest
     {
         return [
             'survey_id' => 'required',
-            'section_id' => 'required',
+            'section_id' => 'nullable',
             'content' => 'required',
             'type' => ['required', Rule::in(Question::TYPES)]
         ];

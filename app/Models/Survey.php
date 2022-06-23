@@ -7,6 +7,40 @@ use Backpack\CRUD\app\Models\Traits\SpatieTranslatable\HasTranslations;
 use Illuminate\Database\Eloquent\Model;
 use App\Contracts\Survey as SurveyContract;
 
+/**
+ * App\Models\Survey
+ *
+ * @property int $id
+ * @property array $name
+ * @property array|null $settings
+ * @property int $enabled
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Entry[] $entries
+ * @property-read int|null $entries_count
+ * @property-read mixed $rules
+ * @property-read array $translations
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Question[] $questions
+ * @property-read int|null $questions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Section[] $sections
+ * @property-read int|null $sections_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Survey newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Survey newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Survey query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Survey whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Survey whereEnabled($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Survey whereExpired($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Survey whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Survey whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Survey whereSettings($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Survey whereUpdatedAt($value)
+ * @mixin \Eloquent
+ * @property \Illuminate\Support\Carbon $expired
+ * @property int|null $accept_guest_entries
+ * @property int $limit_per_participant
+ * @method static \Illuminate\Database\Eloquent\Builder|Survey whereAcceptGuestEntries($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Survey whereLimitPerParticipant($value)
+ */
 class Survey extends Model implements SurveyContract
 {
     use CrudTrait, HasTranslations;
@@ -27,6 +61,7 @@ class Survey extends Model implements SurveyContract
 
     protected $fillable = ['name', 'settings'];
     protected $translatable = ['name'];
+    protected $dates = ['expired', 'created_at', 'updated_at'];
 
     /**
      * The attributes that should be casted.
@@ -74,7 +109,7 @@ class Survey extends Model implements SurveyContract
      */
     public function acceptsGuestEntries()
     {
-        return $this->settings['accept-guest-entries'] ?? false;
+        return $this->accept_guest_entries ?? false;
     }
 
     /**
@@ -88,7 +123,7 @@ class Survey extends Model implements SurveyContract
             return;
         }
 
-        $limit = $this->settings['limit-per-participant'] ?? 1;
+        $limit = $this->limit_per_participant ?? 1;
 
         return $limit !== -1 ? $limit : null;
     }
