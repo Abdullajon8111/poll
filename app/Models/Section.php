@@ -43,4 +43,9 @@ class Section extends Model implements SectionContract
     {
         return $this->hasMany(Question::class);
     }
+
+    public function survey()
+    {
+        return $this->belongsTo(Survey::class);
+    }
 }

@@ -21,6 +21,17 @@ class Question extends Model implements QuestionContract
         'options' => 'array',
     ];
 
+    const TYPES = ['text', 'number', 'radio', 'multiselect'];
+
+    public static function types()
+    {
+        return [
+            'text' => 'text',
+            'number' => 'number',
+            'radio' => 'radio',
+            'multiselect' => 'multiselect'
+        ]
+    }
 
     protected static function boot()
     {
