@@ -15,13 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::redirect('/', 'login');
+Route::redirect('dashboard', 'survey')->name('dashboard');
 
 Route::get('survey', [SurveyController::class, 'index'])->name('survey.index');
 Route::get('survey/{survey}', [SurveyController::class, 'show'])->name('survey.show');

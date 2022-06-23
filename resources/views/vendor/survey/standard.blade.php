@@ -1,6 +1,6 @@
 <div class="card my-4">
     <div class="card-body">
-        <h2 class="mb-0 text-center">{{ $survey->name }}</h2>
+        <h2 class="mb-0">{{ $survey->name }}</h2>
 
         @if(!$eligible)
             We only accept

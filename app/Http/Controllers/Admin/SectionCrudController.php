@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Admin\Filters\BaseFilter;
+use App\Http\Controllers\Admin\Filters\SurveyFilter;
 use App\Http\Requests\SectionRequest;
 use App\Models\Survey;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
@@ -26,6 +28,20 @@ class SectionCrudController extends CrudController
     {
         CRUD::column('survey_id');
         CRUD::column('name')->type('text');
+
+        CRUD::addFilter([
+            'name' => 'survey',
+            'type' => 'dropdown'
+        ],
+            Survey::pluck('name', 'id')->toArray(),
+            function ($value) {
+                $this->crud->addClause('where', 'id', $value);
+            });
+    }
+
+    protected function setupUpdateOperation()
+    {
+        $this->setupCreateOperation();
     }
 
     protected function setupCreateOperation()
@@ -33,12 +49,6 @@ class SectionCrudController extends CrudController
         CRUD::setValidation(SectionRequest::class);
 
         CRUD::field('survey_id');
-
         CRUD::field('name')->type('text');
-    }
-
-    protected function setupUpdateOperation()
-    {
-        $this->setupCreateOperation();
     }
 }

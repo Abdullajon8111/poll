@@ -59,9 +59,10 @@ class Survey extends Model implements SurveyContract
         parent::__construct($attributes);
     }
 
-    protected $fillable = ['name', 'settings'];
+    protected $guarded = ['id'];
     protected $translatable = ['name'];
     protected $dates = ['expired', 'created_at', 'updated_at'];
+    protected $hidden = ['settings'];
 
     /**
      * The attributes that should be casted.

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\QuestionRequest;
 use App\Models\Question;
+use App\Models\Survey;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
@@ -30,6 +31,15 @@ class QuestionCrudController extends CrudController
         CRUD::column('type');
         CRUD::column('options');
         CRUD::column('rules');
+
+        CRUD::addFilter([
+            'name' => 'survey',
+            'type' => 'dropdown'
+        ],
+            Survey::pluck('name', 'id')->toArray(),
+            function ($value) {
+                $this->crud->addClause('where', 'id', $value);
+            });
     }
 
     protected function setupUpdateOperation()

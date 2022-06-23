@@ -24,11 +24,14 @@ class SurveyCrudController extends CrudController
         CRUD::setModel(\App\Models\Survey::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/survey');
         CRUD::setEntityNameStrings('survey', 'surveys');
+
+        CRUD::setShowView('admin.survey.show');
     }
 
     protected function setupListOperation()
     {
         CRUD::column('name');
+
         CRUD::column('enabled')->type('boolean');
         CRUD::column('accept_guest_entries')->type('boolean');
         CRUD::column('limit_per_participant');
@@ -37,13 +40,17 @@ class SurveyCrudController extends CrudController
 
     protected function setupCreateOperation()
     {
+
+
         CRUD::setValidation(SurveyRequest::class);
 
         CRUD::field('name')->type('text');
-        CRUD::field('enabled')->type('toggle');
-        CRUD::field('accept_guest_entries')->type('toggle');
-        CRUD::field('limit_per_participant')->type('number');
-        CRUD::field('expired');
+
+        CRUD::field('enabled')->type('toggle')->size(6);
+        CRUD::field('accept_guest_entries')->type('toggle')->size(6);
+
+        CRUD::field('limit_per_participant')->type('number')->size(6);
+        CRUD::field('expired')->type('date')->size(6);
     }
 
     protected function setupUpdateOperation()
