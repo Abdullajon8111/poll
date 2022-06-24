@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\UniversityRequest;
+use App\Http\Requests\OrganizationRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class UniversityCrudController
+ * Class OrganizationCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class UniversityCrudController extends CrudController
+class OrganizationCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,9 @@ class UniversityCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\University::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/university');
-        CRUD::setEntityNameStrings('university', 'universities');
+        CRUD::setModel(\App\Models\Organization::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/organization');
+        CRUD::setEntityNameStrings('organization', 'organizations');
     }
 
     /**
@@ -39,8 +39,14 @@ class UniversityCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('id');
+        CRUD::column('ktut');
+        CRUD::column('stir');
         CRUD::column('name');
+        CRUD::column('region');
+        CRUD::column('district');
+        CRUD::column('address');
+        CRUD::column('phone');
+        CRUD::column('email');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -57,10 +63,16 @@ class UniversityCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(UniversityRequest::class);
+        CRUD::setValidation(OrganizationRequest::class);
 
-        CRUD::field('id');
+        CRUD::field('ktut');
+        CRUD::field('stir');
         CRUD::field('name');
+        CRUD::field('region');
+        CRUD::field('district');
+        CRUD::field('address');
+        CRUD::field('phone');
+        CRUD::field('email');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
