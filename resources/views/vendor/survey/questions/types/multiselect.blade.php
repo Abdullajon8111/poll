@@ -1,5 +1,14 @@
 @component('survey::questions.base', compact('question'))
-    @foreach ($question->options as $option)
+    @php
+        try {
+            $options = json_decode($question->options, true);
+            $options = array_column($options, 'option');
+        } catch (Exception $exception) {
+            $options = [];
+        }
+    @endphp
+
+    @foreach ($options as $option)
         <div class="custom-control custom-checkbox">
             <input type="checkbox"
                    name="{{ $question->key }}[]"

@@ -46,7 +46,7 @@ class Question extends Model implements QuestionContract
     use HasTranslations;
 
     protected $fillable = ['type', 'options', 'content', 'rules', 'survey_id'];
-    protected $translatable = ['content'];
+    protected $translatable = ['content', 'options'];
 
     protected $casts = [
         'rules' => 'array',

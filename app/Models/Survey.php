@@ -178,7 +178,8 @@ class Survey extends Model implements SurveyContract
     public function getRulesAttribute()
     {
         return $this->questions->mapWithKeys(function ($question) {
-            return [$question->key => $question->rules];
+            $rules = array_column($question->rules, 'rule');
+            return [$question->key => $rules];
         })->all();
     }
 }
