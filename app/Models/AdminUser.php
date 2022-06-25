@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
  * App\Models\AdminUser
@@ -29,9 +31,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Eloquent\Builder|AdminUser whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AdminUser whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\AdminUserUniversity[] $universities
+ * @property-read int|null $universities_count
  */
 class AdminUser extends Authenticatable
 {
+    use CrudTrait, HasRoles;
+
     protected $fillable = [
         'name',
         'email',
@@ -46,4 +52,9 @@ class AdminUser extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function universities()
+    {
+        return $this->belongsToMany(AdminUserUniversity::class, 'admin_user_university');
+    }
 }

@@ -45,6 +45,11 @@ return [
             'driver' => 'session',
             'provider' => 'admin_users',
         ],
+
+        'org' => [
+            'driver' => 'session',
+            'provider' => 'org'
+        ]
     ],
 
     /*
@@ -74,6 +79,11 @@ return [
              'driver' => 'eloquent',
              'model' => App\Models\AdminUser::class,
          ],
+
+        'org' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\Organization::class
+        ]
     ],
 
     /*
