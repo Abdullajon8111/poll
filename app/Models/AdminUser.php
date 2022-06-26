@@ -38,6 +38,9 @@ class AdminUser extends Authenticatable
 {
     use CrudTrait, HasRoles;
 
+    const OPERATOR_ROLE = 'operator';
+    const ADMIN_ROLE = 'admin';
+
     protected $fillable = [
         'name',
         'email',
@@ -55,6 +58,6 @@ class AdminUser extends Authenticatable
 
     public function universities()
     {
-        return $this->belongsToMany(AdminUserUniversity::class, 'admin_user_university');
+        return $this->belongsToMany(University::class, 'admin_user_university');
     }
 }

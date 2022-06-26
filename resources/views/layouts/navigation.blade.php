@@ -11,19 +11,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-                <x-nav-link href="{{ route('survey.index') }}" :active="request()->segment(1) == 'survey'">
-                    {{ __('Surveys') }}
-                </x-nav-link>
+{{--                <x-nav-link href="{{ route('survey.index') }}" :active="request()->segment(1) == 'survey'">--}}
+{{--                    {{ __('Surveys') }}--}}
+{{--                </x-nav-link>--}}
             </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
 
                 <!-- Settings Dropdown -->
-                @auth
+                @auth('org')
                     <x-dropdown id="settingsDropdown">
                         <x-slot name="trigger">
-                            {{ Auth::user()->name }}
+                            {{ Auth::guard('org')->user()->name }}
                         </x-slot>
 
                         <x-slot name="content">

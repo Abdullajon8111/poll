@@ -19,6 +19,6 @@ class SurveyEntryController extends Controller
         $user = auth()->user();
         (new Entry())->for($survey)->fromArray($answers)->by($user)->push();
 
-        return redirect()->route('survey.index');
+        return redirect()->route('dashboard');
     }
 }

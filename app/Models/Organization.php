@@ -43,12 +43,4 @@ class Organization extends Authenticatable
     use HasFactory;
 
     protected $guarded = ['id'];
-
-    public function scopeGetByKtutAndStir($query, $stir, $ktut)
-    {
-        return $query
-            ->whereStir($stir)
-            ->whereKtut($ktut)
-            ->first();
-    }
 }

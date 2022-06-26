@@ -16,10 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::redirect('/', 'login');
-Route::redirect('dashboard', 'survey')->name('dashboard');
-
-Route::get('survey', [SurveyController::class, 'index'])->name('survey.index');
-Route::get('survey/{survey}', [SurveyController::class, 'show'])->name('survey.show');
-Route::post('survey-entries/{survey}', [SurveyEntryController::class, 'store'])->name('survey-entry.store');
 
 require __DIR__ . '/auth.php';
+Route::redirect('login', 'awoi/login');
+
+
+Route::middleware('auth:org')->group(function () {
+    Route::view('dashboard', 'dashboard')->name('dashboard');
+    Route::get('survey', [SurveyController::class, 'index'])->name('survey.index');
+    Route::get('survey/{university:slug}/{survey}', [SurveyController::class, 'show'])->name('survey.show');
+    Route::post('survey-entries/{survey}', [SurveyEntryController::class, 'store'])->name('survey-entry.store');
+});

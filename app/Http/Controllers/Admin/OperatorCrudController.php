@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\UniversityRequest;
-use App\Models\Survey;
-use App\Models\University;
+use App\Http\Requests\OperatorRequest;
+use App\Models\AdminUser;
+use App\Models\User;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
- * Class UniversityCrudController
+ * Class OperatorCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class UniversityCrudController extends CrudController
+class OperatorCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -23,39 +24,31 @@ class UniversityCrudController extends CrudController
 
     public function setup()
     {
-        CRUD::setModel(\App\Models\University::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/university');
-        CRUD::setEntityNameStrings('university', 'universities');
-
-        CRUD::setListView('admin.university.list');
+        CRUD::setModel(AdminUser::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/operator');
+        CRUD::setEntityNameStrings('operator', 'operators');
     }
 
     protected function setupListOperation()
     {
-        CRUD::column('id');
+        $this->crud->query = AdminUser::whereHas('roles', function (Builder $query) {
+           $query->where('name', AdminUser::OPERATOR_ROLE);
+        });
+
         CRUD::column('name');
-        CRUD::column('slug');
-        CRUD::column('enabled')->type('check');
-        CRUD::column('url')->type('view')->view('admin.university.columns.url');
+        CRUD::column('email');
+        CRUD::column('universities');
     }
 
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(UniversityRequest::class);
+        CRUD::setValidation(OperatorRequest::class);
 
-        CRUD::field('name');
-        CRUD::field('slug');
-        CRUD::field('enabled')->type('toggle');
+        CRUD::field('universities');
     }
 
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
-    }
-
-    public function surveys()
-    {
-        $surveys = Survey::all();
-        return view('admin.university.select-survey', compact('surveys'));
     }
 }

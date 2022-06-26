@@ -11,6 +11,7 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('organization') }}'><i class='nav-icon la la-sitemap'></i> Organizations</a></li>
 
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('separator') }}'><i class='nav-icon la la-filter'></i> Separators</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('operator') }}'><i class='nav-icon la la-user'></i> Operators</a></li>
 
 <li class="nav-item nav-dropdown">
     <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-users"></i> Authentication</a>

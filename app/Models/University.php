@@ -63,6 +63,11 @@ class University extends Model
 
     public function admins()
     {
-        return $this->belongsToMany(AdminUserUniversity::class, 'admin_user_university');
+        return $this->belongsToMany(AdminUser::class, 'admin_user_university');
+    }
+
+    public function entries()
+    {
+        return $this->hasMany(Entry::class);
     }
 }

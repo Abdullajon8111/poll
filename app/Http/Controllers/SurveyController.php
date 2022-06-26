@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Survey;
+use App\Models\University;
 use Illuminate\Http\Request;
 
 class SurveyController extends Controller
@@ -17,9 +18,8 @@ class SurveyController extends Controller
         return view('surveys.index', compact('surveys'));
     }
 
-    public function show(Survey $survey)
+    public function show(University $university, Survey $survey)
     {
-        abort_if($survey->expired->timestamp < now()->timestamp, 403);
 
         return view('surveys.show', compact('survey'));
     }

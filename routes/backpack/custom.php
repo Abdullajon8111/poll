@@ -21,7 +21,11 @@ Route::group([
     Route::crud('question', 'QuestionCrudController');
     Route::crud('entry', 'EntryCrudController');
     Route::crud('answer', 'AnswerCrudController');
+
     Route::crud('university', 'UniversityCrudController');
+    Route::get('get-university-list', 'UniversityCrudController@surveys')->name('admin.surveys.list');
+
     Route::crud('organization', 'OrganizationCrudController');
     Route::crud('separator', 'SeparatorCrudController');
+    Route::crud('operator', 'OperatorCrudController');
 }); // this should be the absolute last line of this file

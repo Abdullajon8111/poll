@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\AnswerRequest;
 use App\Models\Answer;
+use App\Models\Organization;
 use App\Models\Survey;
 use App\Models\User;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
@@ -37,15 +38,15 @@ class AnswerCrudController extends CrudController
         $lang = app()->getLocale();
         $answerCrudQuery = Answer::query()
             ->leftJoin('entries', 'entries.id', '=', 'answers.entry_id')
-            ->leftJoin('users', 'entries.participant_id', '=', 'users.id')
+            ->leftJoin('organizations', 'entries.participant_id', '=', 'organizations.id')
             ->leftJoin('surveys', 'entries.survey_id', '=', 'surveys.id')
-            ->select(['answers.*', 'users.name as full_name', "surveys.name->{$lang} as survey"]);
+            ->select(['answers.*', 'organizations.name as name', "surveys.name->{$lang} as survey"]);
 
         $this->crud->query = $answerCrudQuery;
 
         CRUD::column('survey');
         CRUD::column('question_id');
-        CRUD::column('full_name');
+        CRUD::column('name');
         CRUD::column('value');
 
         CRUD::addFilter(
@@ -57,7 +58,7 @@ class AnswerCrudController extends CrudController
 
         CRUD::addFilter(
             ['name' => 'user', 'type' => 'select2'],
-            User::pluck('name', 'id')->toArray(),
+            Organization::pluck('name', 'id')->toArray(),
             function ($value) use ($answerCrudQuery) {
                 $this->crud->query = $answerCrudQuery->where('entries.participant_id', $value);
             });

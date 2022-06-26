@@ -29,10 +29,8 @@ use App\Models\Organization; ?>
 
                 </table>
 
-                <form action="{{ route('awoi.auth') }}" method="post">
+                <form action="{{ route('awoi.logout') }}" method="post">
                     @csrf
-                    <input type="hidden" name="stir" value="{{ request('stir') }}">
-                    <input type="hidden" name="ktut" value="{{ request('ktut') }}">
 
                     <button class="btn btn-dark mt-3 btn-block">{{ __('Start') }}</button>
                 </form>

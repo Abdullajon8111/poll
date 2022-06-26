@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AwoiLoginRequest;
 use App\Models\Organization;
+use Illuminate\Validation\ValidationException;
 use function request;
 
 class LoginWithOrgInnController extends Controller
@@ -13,20 +14,24 @@ class LoginWithOrgInnController extends Controller
         return view('awoi.login');
     }
 
-    public function info()
-    {
-        return view('awoi.info', [
-            'org' => Organization::getByKtutAndStir(request('stir'), request('ktut'))
-        ]);
-    }
-
+    /**
+     * @throws ValidationException
+     */
     public function login(AwoiLoginRequest $request)
     {
-        $org = Organization::getByKtutAndStir($request->stir, $request->ktut);
+        $org = Organization::query()
+            ->whereStir($request->stir)
+            ->whereKtut($request->ktut)
+            ->first();
 
-        if ($org) {
-            auth('org')->loginUsingId($org->id);
+        if (!$org) {
+            throw ValidationException::withMessages([
+                'email' => trans('auth.failed'),
+            ]);
         }
 
+        auth('org')->loginUsingId($org->id);
+
+        return redirect()->route('dashboard');
     }
 }

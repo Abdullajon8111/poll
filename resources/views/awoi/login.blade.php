@@ -13,7 +13,8 @@
             <!-- Validation Errors -->
             <x-auth-validation-errors class="mb-3" :errors="$errors" />
 
-            <form method="get" action="{{ route('awoi.info') }}">
+            <form method="post" action="{{ route('awoi.login') }}">
+                @csrf
 
                 <div class="form-group">
                     <x-label for="stir" :value="__('STIR')" />
@@ -22,14 +23,14 @@
 
                 <div class="form-group">
                     <x-label for="ktut" :value="__('KTUT')" />
-                    <x-input id="ktut" type="text" name="ktut" required />
+                    <x-input id="ktut" type="text" name="ktut" :value="old('ktut')" required />
                 </div>
 
                 <div class="mb-0">
                     <div class="d-flex justify-content-end align-items-baseline">
 
                         <x-button class="btn-block">
-                            {{ __('Get info') }}
+                            {{ __('Login') }}
                         </x-button>
                     </div>
                 </div>
