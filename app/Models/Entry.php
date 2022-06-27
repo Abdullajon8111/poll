@@ -36,6 +36,9 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Entry whereSurveyId($value)
  * @method static Builder|Entry whereUpdatedAt($value)
  * @mixin Eloquent
+ * @property int|null $university_id
+ * @property-read \App\Models\University|null $university
+ * @method static Builder|Entry whereUniversityId($value)
  */
 class Entry extends Model implements EntryContract
 {

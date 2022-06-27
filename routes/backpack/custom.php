@@ -16,16 +16,23 @@ Route::group([
     ),
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
-    Route::crud('survey', 'SurveyCrudController');
-    Route::crud('section', 'SectionCrudController');
-    Route::crud('question', 'QuestionCrudController');
-    Route::crud('entry', 'EntryCrudController');
-    Route::crud('answer', 'AnswerCrudController');
 
-    Route::crud('university', 'UniversityCrudController');
-    Route::get('get-university-list', 'UniversityCrudController@surveys')->name('admin.surveys.list');
+    Route::middleware('role:admin')->group(function () {
+        Route::crud('survey', 'SurveyCrudController');
+        Route::crud('section', 'SectionCrudController');
+        Route::crud('question', 'QuestionCrudController');
 
-    Route::crud('organization', 'OrganizationCrudController');
-    Route::crud('separator', 'SeparatorCrudController');
+        Route::crud('entry', 'EntryCrudController');
+        Route::get('entry/ajax-organization-options', 'EntryCrudController@orgOptions')->name('admin.entry.options');
+
+        Route::crud('answer', 'AnswerCrudController');
+
+        Route::crud('university', 'UniversityCrudController');
+        Route::get('get-university-list', 'UniversityCrudController@surveys')->name('admin.surveys.list');
+
+        Route::crud('organization', 'OrganizationCrudController');
+        Route::crud('separator', 'SeparatorCrudController');
+    });
+
     Route::crud('operator', 'OperatorCrudController');
 }); // this should be the absolute last line of this file

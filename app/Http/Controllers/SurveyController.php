@@ -21,7 +21,7 @@ class SurveyController extends Controller
     public function show(University $university, Survey $survey)
     {
 
-        return view('surveys.show', compact('survey'));
+        return view('surveys.show', compact('survey', 'university'));
     }
 
 }

@@ -32,6 +32,8 @@ use Str;
  * @property-read int|null $admins_count
  * @method static Builder|University whereEnabled($value)
  * @method static Builder|University whereSlug($value)
+ * @property-read Collection|\App\Models\Entry[] $entries
+ * @property-read int|null $entries_count
  */
 class University extends Model
 {

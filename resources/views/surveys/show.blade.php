@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <form action="{{ route('survey-entry.store', compact('survey')) }}" method="post">
+    <form action="{{ route('survey-entry.store', compact('university', 'survey')) }}" method="post">
         @csrf
         @include('survey::standard', ['survey' => $survey])
     </form>

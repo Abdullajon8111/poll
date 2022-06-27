@@ -10,8 +10,8 @@ use App\Models\University;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Http\Request;
 
 class EntryCrudController extends CrudController
 {
@@ -20,6 +20,7 @@ class EntryCrudController extends CrudController
 //    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
 //    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use DeleteOperation;
+
 //    use ShowOperation;
 
     public function setup()
@@ -31,17 +32,26 @@ class EntryCrudController extends CrudController
         CRUD::enableExportButtons();
     }
 
+    public function orgOptions(Request $request)
+    {
+        $term = $request->input('term');
+
+        return Organization::where('name', 'like', '%' . $term . '%')->get()->pluck('name', 'id');
+    }
+
     protected function setupListOperation()
     {
+        CRUD::column('id');
         CRUD::column('survey_id');
         CRUD::column('university_id');
         CRUD::column('participant_id');
+        CRUD::column('created_at');
 
         CRUD::addFilter(
             ['name' => 'survey_id', 'type' => 'select2'],
             Survey::pluck('name', 'id')->toArray(),
             function ($value) {
-               $this->crud->addClause('where', 'survey_id', '=', $value);
+                $this->crud->addClause('where', 'survey_id', '=', $value);
             });
 
         CRUD::addFilter(
@@ -52,8 +62,8 @@ class EntryCrudController extends CrudController
             });
 
         CRUD::addFilter(
-            ['name' => 'participant_id', 'type' => 'select2'],
-            Organization::pluck('name', 'id')->toArray(),
+            ['name' => 'participant_id', 'type' => 'select2_ajax'],
+            route('admin.entry.options'),
             function ($value) {
                 $this->crud->addClause('where', 'participant_id', '=', $value);
             });

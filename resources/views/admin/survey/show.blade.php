@@ -90,21 +90,21 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-lg-4">
-            <a href="{{ route('section.index', ['survey' => $entry->id]) }}" target="newModalWindow" class="btn btn-info btn-block">
-                <i class="la la-puzzle-piece">&ensp;</i>
-                {{ __('Section') }}
-            </a>
-        </div>
+{{--    <div class="row">--}}
+{{--        <div class="col-lg-4">--}}
+{{--            <a href="{{ route('section.index', ['survey' => $entry->id]) }}" target="newModalWindow" class="btn btn-info btn-block">--}}
+{{--                <i class="la la-puzzle-piece">&ensp;</i>--}}
+{{--                {{ __('Section') }}--}}
+{{--            </a>--}}
+{{--        </div>--}}
 
-        <div class="col-lg-4">
-            <a href="{{ route('question.index', ['survey' => $entry->id]) }}" target="newModalWindow" class="btn btn-info btn-block">
-                <i class="la la-question">&ensp;</i>
-                {{ __('Question') }}
-            </a>
-        </div>
-    </div>
+{{--        <div class="col-lg-4">--}}
+{{--            <a href="{{ route('question.index', ['survey' => $entry->id]) }}" target="newModalWindow" class="btn btn-info btn-block">--}}
+{{--                <i class="la la-question">&ensp;</i>--}}
+{{--                {{ __('Question') }}--}}
+{{--            </a>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 @endsection
 
 

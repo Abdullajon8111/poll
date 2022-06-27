@@ -33,6 +33,12 @@ use Spatie\Permission\Traits\HasRoles;
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\AdminUserUniversity[] $universities
  * @property-read int|null $universities_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
+ * @property-read int|null $permissions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
+ * @property-read int|null $roles_count
+ * @method static \Illuminate\Database\Eloquent\Builder|AdminUser permission($permissions)
+ * @method static \Illuminate\Database\Eloquent\Builder|AdminUser role($roles, $guard = null)
  */
 class AdminUser extends Authenticatable
 {
