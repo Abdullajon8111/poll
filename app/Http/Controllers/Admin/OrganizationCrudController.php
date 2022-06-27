@@ -41,10 +41,10 @@ class OrganizationCrudController extends CrudController
     {
         CRUD::column('ktut');
         CRUD::column('stir');
-        CRUD::column('name');
+        CRUD::column('name')->type('textarea');
         CRUD::column('region');
         CRUD::column('district');
-        CRUD::column('address');
+        CRUD::column('address')->type('textarea');;
         CRUD::column('phone');
         CRUD::column('email');
 

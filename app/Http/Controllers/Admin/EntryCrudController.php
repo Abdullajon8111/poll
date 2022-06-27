@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\EntryRequest;
 use App\Models\Entry;
+use App\Models\Organization;
 use App\Models\Survey;
+use App\Models\University;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
@@ -44,14 +46,14 @@ class EntryCrudController extends CrudController
 
         CRUD::addFilter(
             ['name' => 'university_id', 'type' => 'select2'],
-            Survey::pluck('name', 'id')->toArray(),
+            University::pluck('name', 'id')->toArray(),
             function ($value) {
                 $this->crud->addClause('where', 'university_id', '=', $value);
             });
 
         CRUD::addFilter(
             ['name' => 'participant_id', 'type' => 'select2'],
-            Survey::pluck('name', 'id')->toArray(),
+            Organization::pluck('name', 'id')->toArray(),
             function ($value) {
                 $this->crud->addClause('where', 'participant_id', '=', $value);
             });
