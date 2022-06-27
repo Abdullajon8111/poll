@@ -21,15 +21,6 @@
         @endforeach
     @endif
 
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=Nunito');
-        body {
-            font-family: 'Nunito', sans-serif;
-            font-weight: 200;
-        }
-
-    </style>
-
     @yield('after_styles')
     @stack('after_styles')
 

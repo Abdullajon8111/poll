@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EntryController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\SurveyEntryController;
 use Illuminate\Support\Facades\Route;
@@ -26,4 +27,7 @@ Route::middleware('auth:org')->group(function () {
     Route::get('survey', [SurveyController::class, 'index'])->name('survey.index');
     Route::get('survey/{university:slug}/{survey}', [SurveyController::class, 'show'])->name('survey.show');
     Route::post('survey-entries/{university:slug}/{survey}', [SurveyEntryController::class, 'store'])->name('survey-entry.store');
+
+    Route::get('entry', [EntryController::class, 'index'])->name('entry.index');
+    Route::get('entry/{entry}/show', [EntryController::class, 'show'])->name('entry.show');
 });

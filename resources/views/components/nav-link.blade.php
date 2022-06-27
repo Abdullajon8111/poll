@@ -6,7 +6,7 @@
                 : 'nav-link';
 @endphp
 
-<li class="nav-item">
+<li class="nav-item btn-link">
     <a {{ $attributes->merge(['class' => $classes]) }}>
         {{ $slot }}
     </a>

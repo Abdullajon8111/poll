@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+{{--<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">--}}
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +12,8 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link href="{{ asset('packages/select2/dist/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('packages/select2-bootstrap-theme/dist/select2-bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
@@ -30,5 +32,19 @@
         <main class="container my-5">
             {{ $slot }}
         </main>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="{{ asset('packages/select2/dist/js/select2.full.min.js') }}"></script>
+
+        <script>
+            $(document).ready(function () {
+                $('.select2').select2({
+                    theme: "bootstrap",
+                    allowClear: true,
+                    placeholder: "{{ __('Select an attribute') }}"
+                })
+            })
+
+        </script>
     </body>
 </html>

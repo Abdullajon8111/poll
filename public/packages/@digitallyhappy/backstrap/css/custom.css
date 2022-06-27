@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+body {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+}
 .app-body .sidebar {
     flex: 0 0 250px;
 }
@@ -8,4 +14,12 @@
 
 .sidebar .nav {
     width: 100%;
+}
+
+.app-header .navbar-brand {
+    width: 250px;
+}
+
+html:not([dir=rtl]) .sidebar {
+    margin-left: -250px;
 }

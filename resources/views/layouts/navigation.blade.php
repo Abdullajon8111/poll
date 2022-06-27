@@ -11,9 +11,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-{{--                <x-nav-link href="{{ route('survey.index') }}" :active="request()->segment(1) == 'survey'">--}}
-{{--                    {{ __('Surveys') }}--}}
-{{--                </x-nav-link>--}}
+                <x-nav-link class="nav-link" href="{{ route('dashboard') }}" :active="request()->segment(1) == 'dashboard'">
+                    {{ __('Dashboard') }}
+                </x-nav-link>
+
+                <x-nav-link class="nav-link" href="{{ route('entry.index') }}" :active="request()->segment(1) == 'entry'">
+                    {{ __('Entry') }}
+                </x-nav-link>
             </ul>
 
             <!-- Right Side Of Navbar -->

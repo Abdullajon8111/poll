@@ -17,7 +17,7 @@ Route::group([
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
 
-    Route::middleware('role:admin')->group(function () {
+    Route::middleware(['role:admin,admin'])->group(function () {
         Route::crud('survey', 'SurveyCrudController');
         Route::crud('section', 'SectionCrudController');
         Route::crud('question', 'QuestionCrudController');
