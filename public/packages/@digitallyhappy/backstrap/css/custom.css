@@ -1,0 +1,11 @@
+.app-body .sidebar {
+    flex: 0 0 250px;
+}
+
+.sidebar .sidebar-nav {
+    width: 100%
+}
+
+.sidebar .nav {
+    width: 100%;
+}
