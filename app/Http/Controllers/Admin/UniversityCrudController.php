@@ -8,6 +8,7 @@ use App\Models\AdminUser;
 use App\Models\Survey;
 use App\Models\University;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
+use Backpack\CRUD\app\Library\CrudPanel\CrudPanel;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
@@ -32,37 +33,6 @@ class UniversityCrudController extends CrudController
         CRUD::setListView('admin.university.list');
     }
 
-    protected function setupListOperation()
-    {
-        /** @var $user AdminUser */
-        $user = auth('admin')->user();
-
-        if ($user->hasRole(AdminUser::OPERATOR_ROLE)) {
-            $u_ids = $user->universities->pluck('id')->toArray();
-            $this->crud->query = University::whereIn('id', $u_ids);
-        }
-
-        CRUD::column('id');
-        CRUD::column('name');
-        CRUD::column('slug');
-        CRUD::column('enabled')->type('view')->view('admin.university.columns.toggle');
-        CRUD::column('url')->type('view')->view('admin.university.columns.url');
-    }
-
-    protected function setupCreateOperation()
-    {
-        CRUD::setValidation(UniversityRequest::class);
-
-        CRUD::field('name');
-        CRUD::field('slug');
-        CRUD::field('enabled')->type('toggle');
-    }
-
-    protected function setupUpdateOperation()
-    {
-        $this->setupCreateOperation();
-    }
-
     public function surveys()
     {
         $surveys = Survey::all();
@@ -76,5 +46,37 @@ class UniversityCrudController extends CrudController
         $university->save();
 
         return redirect()->back();
+    }
+
+    protected function setupListOperation()
+    {
+        /** @var $user AdminUser */
+        $user = auth('admin')->user();
+
+        if ($user->hasRole(AdminUser::OPERATOR_ROLE)) {
+            $u_ids = $user->universities->pluck('id')->toArray();
+            $this->crud->query = University::whereIn('id', $u_ids);
+        }
+
+        CRUD::column('id');
+
+        CRUD::column('name')->type('view')->view('admin.university.columns.name');
+        CRUD::column('slug');
+        CRUD::column('enabled')->type('view')->view('admin.university.columns.toggle');
+        CRUD::column('url')->type('view')->view('admin.university.columns.url');
+    }
+
+    protected function setupUpdateOperation()
+    {
+        $this->setupCreateOperation();
+    }
+
+    protected function setupCreateOperation()
+    {
+        CRUD::setValidation(UniversityRequest::class);
+
+        CRUD::field('name');
+        CRUD::field('slug');
+        CRUD::field('enabled')->type('toggle');
     }
 }
