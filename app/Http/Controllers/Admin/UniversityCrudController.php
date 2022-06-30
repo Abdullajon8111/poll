@@ -52,8 +52,10 @@ class UniversityCrudController extends CrudController
     {
         /** @var $user AdminUser */
         $user = auth('admin')->user();
+        $u_ids = [];
 
         if ($user->hasRole(AdminUser::OPERATOR_ROLE)) {
+
             $u_ids = $user->universities->pluck('id')->toArray();
             $this->crud->query = University::whereIn('id', $u_ids);
         }

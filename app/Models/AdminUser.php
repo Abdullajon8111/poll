@@ -44,7 +44,7 @@ class AdminUser extends Authenticatable
 {
     use CrudTrait, HasRoles;
 
-    const OPERATOR_ROLE = 'operator';
+    const OPERATOR_ROLE = 'Operator';
     const ADMIN_ROLE = 'admin';
 
     protected $fillable = [
