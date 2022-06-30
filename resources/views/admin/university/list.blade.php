@@ -160,4 +160,5 @@
   @stack('crud_list_scripts')
 
   @include('admin.university.get-url-modal-logic')
+  @include('admin.university.url-inline-logic')
 @endsection
