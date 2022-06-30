@@ -6,6 +6,7 @@
         } catch (Exception $exception) {
             $options = [];
         }
+
     @endphp
 
     @foreach($options as $option)

@@ -72,7 +72,7 @@ use App\Models\University;
                 <tbody>
                 @foreach($entries as $entry)
                     <tr style="cursor:pointer;" ondblclick="window.location.href = '{{ route('entry.show', compact('entry')) }}'">
-                        <td>{{ $entry->id }}</td>
+                        <td>{{ $entries->firstItem() + $loop->index }}</td>
                         <td>{{ $entry->survey->name }}</td>
                         <td>{{ $entry->university->name ?? '' }}</td>
                     </tr>
@@ -80,6 +80,8 @@ use App\Models\University;
                 </tbody>
 
             </table>
+
+            {{ $entries->links() }}
         </div>
     </div>
 </x-app-layout>

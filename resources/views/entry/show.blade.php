@@ -19,7 +19,7 @@ use App\Models\Answer;
             <table class="table table-hover">
                 <thead class="bg-dark text-white">
                 <tr>
-                    <th>{{ __('ID') }}</th>
+                    <th>{{ __('#') }}</th>
                     <th>{{ __('Question') }}</th>
                     <th>{{ __('Answer') }}</th>
                 </tr>
@@ -27,7 +27,7 @@ use App\Models\Answer;
                 <tbody>
                 @foreach($answers as $item)
                     <tr style="cursor:pointer;">
-                        <td>{{  $item->id }}</td>
+                        <td>{{  $loop->index + 1 }}</td>
                         <td>{!! $item->question->content !!}</td>
                         <td>{{  $item->value }} </td>
                     </tr>

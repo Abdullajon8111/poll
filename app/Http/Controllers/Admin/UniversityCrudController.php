@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\UniversityChangeStatusRequest;
 use App\Http\Requests\UniversityRequest;
+use App\Models\AdminUser;
 use App\Models\Survey;
 use App\Models\University;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
@@ -32,10 +34,18 @@ class UniversityCrudController extends CrudController
 
     protected function setupListOperation()
     {
+        /** @var $user AdminUser */
+        $user = auth('admin')->user();
+
+        if ($user->hasRole(AdminUser::OPERATOR_ROLE)) {
+            $u_ids = $user->universities->pluck('id')->toArray();
+            $this->crud->query = University::whereIn('id', $u_ids);
+        }
+
         CRUD::column('id');
         CRUD::column('name');
         CRUD::column('slug');
-        CRUD::column('enabled')->type('check');
+        CRUD::column('enabled')->type('view')->view('admin.university.columns.toggle');
         CRUD::column('url')->type('view')->view('admin.university.columns.url');
     }
 
@@ -57,5 +67,14 @@ class UniversityCrudController extends CrudController
     {
         $surveys = Survey::all();
         return view('admin.university.select-survey', compact('surveys'));
+    }
+
+    public function changeStatus(University $university)
+    {
+        $status = $university->enabled;
+        $university->enabled = !$status;
+        $university->save();
+
+        return redirect()->back();
     }
 }

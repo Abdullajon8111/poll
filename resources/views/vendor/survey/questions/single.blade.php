@@ -3,8 +3,10 @@
         ? "survey::questions.types.{$question->type}"
         : "survey::questions.types.text",[
             'disabled' => !($eligible ?? true),
-            'value' => $lastEntry ? $lastEntry->answerFor($question) : null,
-            'includeResults' => ($lastEntry ?? null) !== null
+            // 'value' => $lastEntry ? $lastEntry->answerFor($question) : null,
+            'value' => null,
+            // 'includeResults' => ($lastEntry ?? null) !== null
+            'includeResults' => null
         ]
     )
 </div>

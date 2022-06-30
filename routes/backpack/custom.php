@@ -27,12 +27,13 @@ Route::group([
 
         Route::crud('answer', 'AnswerCrudController');
 
-        Route::crud('university', 'UniversityCrudController');
-        Route::get('get-university-list', 'UniversityCrudController@surveys')->name('admin.surveys.list');
+        Route::crud('operator', 'OperatorCrudController');
 
         Route::crud('organization', 'OrganizationCrudController');
         Route::crud('separator', 'SeparatorCrudController');
     });
 
-    Route::crud('operator', 'OperatorCrudController');
+    Route::crud('university', 'UniversityCrudController');
+    Route::get('get-university-list', 'UniversityCrudController@surveys')->name('admin.surveys.list');
+    Route::get('change-university-enabled-status/{university}', 'UniversityCrudController@changeStatus')->name('admin.university.changeStatus');
 }); // this should be the absolute last line of this file

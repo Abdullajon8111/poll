@@ -37,12 +37,10 @@
         <script src="{{ asset('packages/select2/dist/js/select2.full.min.js') }}"></script>
 
         <script>
-            $(document).ready(function () {
-                $('.select2').select2({
-                    theme: "bootstrap",
-                    allowClear: true,
-                    placeholder: "{{ __('Select an attribute') }}"
-                })
+            $('.select2').select2({
+                theme: "bootstrap",
+                allowClear: true,
+                placeholder: "{{ __('Select an attribute') }}"
             })
 
         </script>
