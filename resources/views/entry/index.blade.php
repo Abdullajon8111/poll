@@ -67,6 +67,7 @@ use App\Models\University;
                     <th>{{ __('ID') }}</th>
                     <th>{{ __('Survey') }}</th>
                     <th>{{ __('University') }}</th>
+                    <th>{{ __('Expired') }}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -75,6 +76,7 @@ use App\Models\University;
                         <td>{{ $entries->firstItem() + $loop->index }}</td>
                         <td>{{ $entry->survey->name }}</td>
                         <td>{{ $entry->university->name ?? '' }}</td>
+                        <td>{{ $entry->survey->expired_at ?? '' }}</td>
                     </tr>
                 @endforeach
                 </tbody>

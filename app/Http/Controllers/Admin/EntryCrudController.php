@@ -47,6 +47,14 @@ class EntryCrudController extends CrudController
         CRUD::column('participant_id');
         CRUD::column('created_at');
 
+        CRUD::addColumn([
+           'type'      => 'select',
+           'name'      => 'expired',
+           'entity'    => 'survey',
+           'attribute' => 'expired',
+           'model'     => \App\Models\Survey::class,
+        ]);
+
         CRUD::addFilter(
             ['name' => 'survey_id', 'type' => 'select2'],
             Survey::pluck('name', 'id')->toArray(),
