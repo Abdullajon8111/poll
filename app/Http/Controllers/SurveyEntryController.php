@@ -14,14 +14,13 @@ class SurveyEntryController extends Controller
     /**
      * @throws ValidationException
      */
-    public function store(University $university, Survey $survey, Request $request): RedirectResponse
+    public function store(University $university, Survey $survey, Request $request): bool
     {
         $answers = $this->validate($request, $survey->rules);
         $user = auth()->user();
         $entry = (new Entry())->for($survey)->fromArray($answers)->by($user);
         $entry->university_id = $university->id;
-        $entry->push();
 
-        return redirect()->route('dashboard');
+        return $entry->push();
     }
 }

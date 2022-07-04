@@ -22,7 +22,10 @@
                 </div>
 
                 <div class="form-group">
-                    <x-label for="ktut" :value="__('KTUT')" />
+                    <x-label class="m-0" for="ktut" :value="__('KTUT')" />
+                    <p class="p-0 m-0">
+                        <a href="http://web.stat.uz/search/ktut/uz/users.php" target="_blank">{{ __('How to determine?') }}</a>
+                    </p>
                     <x-input id="ktut" type="text" name="ktut" :value="old('ktut')" required />
                 </div>
 

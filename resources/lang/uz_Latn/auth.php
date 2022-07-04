@@ -12,7 +12,7 @@
 */
 
 return [
-    'failed'   => 'Бундай маълумотларга эга фойдаланувчи мавжуд эмас.',
+    'failed'   => 'Bunday maʼlumotlarga ega foydalanuvchi mavjud emas.',
     'password' => 'The provided password is incorrect.',
-    'throttle' => 'Кириш учун жуда кўп уринишлар аниқланди. Илтимос :seconds сониядан сўнг яна уриниб кўринг.',
+    'throttle' => 'Kirish uchun juda ko‘p urinishlar aniqlandi. Iltimos :seconds soniyadan so‘ng yana urinib ko‘ring.',
 ];

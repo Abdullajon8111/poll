@@ -1,7 +1,7 @@
 <div class="card my-4">
     <div class="card-body">
-        <h2 class="mb-0">{{ $survey->name }}</h2>
-
+        <h2 class="mb-0">{{ $survey->name }} </h2>
+        <h6 class="font-weight-bold text-danger">{{ $university->name }}</h6>
         @if(!$eligible)
             We only accept
             <strong>{{ $survey->limitPerParticipant() }} {{ \Str::plural('entry', $survey->limitPerParticipant()) }}</strong>

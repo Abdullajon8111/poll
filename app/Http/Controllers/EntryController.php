@@ -8,6 +8,7 @@ use App\Models\Survey;
 use App\Models\University;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class EntryController extends Controller
 {

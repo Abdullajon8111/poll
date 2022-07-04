@@ -34,6 +34,7 @@
         </main>
 
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="{{ asset('packages/select2/dist/js/select2.full.min.js') }}"></script>
 
         <script>
@@ -43,6 +44,19 @@
                 placeholder: "{{ __('Select an attribute') }}"
             })
 
+            window.swal = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-dark mr-3',
+                    cancelButton: 'btn btn-info'
+                },
+                buttonsStyling: false,
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                closeOnClickOutside: false
+            })
+
         </script>
+
+        {{ $js ?? '' }}
     </body>
 </html>
