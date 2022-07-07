@@ -34,6 +34,11 @@ use Str;
  * @method static Builder|University whereSlug($value)
  * @property-read Collection|\App\Models\Entry[] $entries
  * @property-read int|null $entries_count
+ * @property int|null $univer_category_id
+ * @property-read \App\Models\UniverCategory|null $category
+ * @property-read Collection|\App\Models\Organization[] $organizations
+ * @property-read int|null $organizations_count
+ * @method static Builder|University whereUniverCategoryId($value)
  */
 class University extends Model
 {
@@ -71,5 +76,15 @@ class University extends Model
     public function entries()
     {
         return $this->hasMany(Entry::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(UniverCategory::class, 'univer_category_id');
+    }
+
+    public function organizations()
+    {
+        return $this->belongsToMany(Organization::class, 'org_univer_pivot');
     }
 }

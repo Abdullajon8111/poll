@@ -41,6 +41,11 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Organization getByKtutAndStir($stir, $ktut)
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Entry[] $entries
  * @property-read int|null $entries_count
+ * @property int|null $org_category_id
+ * @property-read \App\Models\OrgCategory|null $category
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\University[] $universities
+ * @property-read int|null $universities_count
+ * @method static Builder|Organization whereOrgCategoryId($value)
  */
 class Organization extends Authenticatable
 {
@@ -52,5 +57,15 @@ class Organization extends Authenticatable
     public function entries()
     {
         return $this->hasMany(Entry::class, 'participant_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(OrgCategory::class, 'org_category_id');
+    }
+
+    public function universities()
+    {
+        return $this->belongsToMany(University::class, 'org_univer_pivot');
     }
 }

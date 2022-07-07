@@ -1,0 +1,10 @@
+INSERT INTO poll_db.org_univer_pivot (id, org_category_id, univer_category_id, created_at, updated_at) VALUES (1, 1, 1, '2022-07-07 20:00:13', '2022-07-07 20:00:15');
+INSERT INTO poll_db.org_univer_pivot (id, org_category_id, univer_category_id, created_at, updated_at) VALUES (2, 1, 2, '2022-07-07 20:00:13', '2022-07-07 20:00:15');
+INSERT INTO poll_db.org_univer_pivot (id, org_category_id, univer_category_id, created_at, updated_at) VALUES (3, 1, 3, '2022-07-07 20:00:13', '2022-07-07 20:00:15');
+INSERT INTO poll_db.org_univer_pivot (id, org_category_id, univer_category_id, created_at, updated_at) VALUES (4, 1, 4, '2022-07-07 20:00:13', '2022-07-07 20:00:15');
+INSERT INTO poll_db.org_univer_pivot (id, org_category_id, univer_category_id, created_at, updated_at) VALUES (5, 2, 5, '2022-07-07 20:00:13', '2022-07-07 20:00:15');
+INSERT INTO poll_db.org_univer_pivot (id, org_category_id, univer_category_id, created_at, updated_at) VALUES (6, 2, 6, '2022-07-07 20:00:13', '2022-07-07 20:00:15');
+INSERT INTO poll_db.org_univer_pivot (id, org_category_id, univer_category_id, created_at, updated_at) VALUES (7, 2, 7, '2022-07-07 20:00:13', '2022-07-07 20:00:15');
+INSERT INTO poll_db.org_univer_pivot (id, org_category_id, univer_category_id, created_at, updated_at) VALUES (8, 2, 8, '2022-07-07 20:00:13', '2022-07-07 20:00:15');
+INSERT INTO poll_db.org_univer_pivot (id, org_category_id, univer_category_id, created_at, updated_at) VALUES (9, 3, 9, '2022-07-07 20:00:13', '2022-07-07 20:00:15');
+INSERT INTO poll_db.org_univer_pivot (id, org_category_id, univer_category_id, created_at, updated_at) VALUES (10, 4, 10, '2022-07-07 20:00:13', '2022-07-07 20:00:15');
