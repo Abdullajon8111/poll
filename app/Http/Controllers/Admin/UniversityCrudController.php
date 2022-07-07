@@ -50,6 +50,18 @@ class UniversityCrudController extends CrudController
 
     protected function setupListOperation()
     {
+        CRUD::column('id');
+
+        CRUD::column('name')->type('view')->view('admin.university.columns.name');
+        CRUD::column('slug');
+        CRUD::column('enabled')->type('view')->view('admin.university.columns.toggle');
+        CRUD::column('url')->type('view')->view('admin.university.columns.url');
+
+        $this->isOperator();
+    }
+
+    private function isOperator()
+    {
         /** @var $user AdminUser */
         $user = auth('admin')->user();
         $u_ids = [];
@@ -58,14 +70,10 @@ class UniversityCrudController extends CrudController
 
             $u_ids = $user->universities->pluck('id')->toArray();
             $this->crud->query = University::whereIn('id', $u_ids);
+
+            CRUD::denyAccess(['update', 'create', 'delete', 'show']);
+            CRUD::removeColumn('slug');
         }
-
-        CRUD::column('id');
-
-        CRUD::column('name')->type('view')->view('admin.university.columns.name');
-        CRUD::column('slug');
-        CRUD::column('enabled')->type('view')->view('admin.university.columns.toggle');
-        CRUD::column('url')->type('view')->view('admin.university.columns.url');
     }
 
     protected function setupUpdateOperation()
@@ -80,5 +88,11 @@ class UniversityCrudController extends CrudController
         CRUD::field('name');
         CRUD::field('slug');
         CRUD::field('enabled')->type('toggle');
+
+        if ($user->hasRole(AdminUser::OPERATOR_ROLE)) {
+
+            $u_ids = $user->universities->pluck('id')->toArray();
+            $this->crud->query = University::whereIn('id', $u_ids);
+        }
     }
 }

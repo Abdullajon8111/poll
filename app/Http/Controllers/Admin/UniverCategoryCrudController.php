@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\OrganizationRequest;
-use App\Models\OrgCategory;
+use App\Http\Requests\UniverCategoryRequest;
+use App\Models\UniverCategory;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class OrganizationCrudController
+ * Class UniverCategoryCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class OrganizationCrudController extends CrudController
+class UniverCategoryCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -27,9 +27,9 @@ class OrganizationCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Organization::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/organization');
-        CRUD::setEntityNameStrings('organization', 'organizations');
+        CRUD::setModel(\App\Models\UniverCategory::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/univer-category');
+        CRUD::setEntityNameStrings('', __('Categories'));
     }
 
     /**
@@ -40,14 +40,10 @@ class OrganizationCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('ktut');
-        CRUD::column('stir');
-        CRUD::column('name')->type('textarea');
-        CRUD::column('region');
-        CRUD::column('district');
-        CRUD::column('address')->type('textarea');;
-        CRUD::column('phone');
-        CRUD::column('email');
+        CRUD::column('id');
+        CRUD::column('name');
+        CRUD::column('created_at');
+        CRUD::column('updated_at');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -64,25 +60,12 @@ class OrganizationCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(OrganizationRequest::class);
+        CRUD::setValidation(UniverCategoryRequest::class);
 
-        CRUD::field('ktut');
-        CRUD::field('stir');
+        CRUD::field('id');
         CRUD::field('name');
-        CRUD::field('region');
-        CRUD::field('district');
-        CRUD::field('address');
-        CRUD::field('phone');
-        CRUD::field('email');
-
-        CRUD::addField([
-            'name' => 'org_category_id',
-            'type' => 'select2',
-            'modal' => OrgCategory::class,
-            'entity' => 'category',
-            'attribute' => 'name'
-        ]);
-
+        CRUD::field('created_at');
+        CRUD::field('updated_at');
     }
 
     /**

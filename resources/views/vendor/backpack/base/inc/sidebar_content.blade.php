@@ -42,3 +42,6 @@
     </ul>
 </li>
 @endrole
+
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('org-category') }}'><i class='nav-icon la la-question'></i> Org categories</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('univer-category') }}'><i class='nav-icon la la-question'></i> Univer categories</a></li>

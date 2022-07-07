@@ -36,4 +36,6 @@ Route::group([
     Route::crud('university', 'UniversityCrudController');
     Route::get('get-university-list', 'UniversityCrudController@surveys')->name('admin.surveys.list');
     Route::get('change-university-enabled-status/{university}', 'UniversityCrudController@changeStatus')->name('admin.university.changeStatus');
+    Route::crud('org-category', 'OrgCategoryCrudController');
+    Route::crud('univer-category', 'UniverCategoryCrudController');
 }); // this should be the absolute last line of this file
