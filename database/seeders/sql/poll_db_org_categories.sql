@@ -1,4 +1,10 @@
-INSERT INTO poll_db.org_categories (id, name, created_at, updated_at) VALUES (1, '{"uz_Latn":"Ijtimoiy soha yo''nalishi"}', '2022-07-07 19:52:29', '2022-07-07 19:52:32');
-INSERT INTO poll_db.org_categories (id, name, created_at, updated_at) VALUES (2, '{"uz_Latn":"Texnika va texnologiya soha yo''nalishi"}', '2022-07-07 19:52:29', '2022-07-07 19:52:32');
-INSERT INTO poll_db.org_categories (id, name, created_at, updated_at) VALUES (3, '{"uz_Latn":"Tibbiyot soha yo''nalishi"}', '2022-07-07 19:52:29', '2022-07-07 19:52:32');
-INSERT INTO poll_db.org_categories (id, name, created_at, updated_at) VALUES (4, '{"uz_Latn":"San''at va madaniyat soha yo''nalishi"}', '2022-07-07 19:52:29', '2022-07-07 19:52:32');
+INSERT INTO poll_db.org_categories (id, name, created_at, updated_at) VALUES (1, '{"uz_Latn":"Davlat tashkilotlari"}', '2022-07-07 19:53:38', '2022-07-07 19:53:39');
+INSERT INTO poll_db.org_categories (id, name, created_at, updated_at) VALUES (2, '{"uz_Latn":"Ta''lim sohasi"}', '2022-07-07 19:53:38', '2022-07-07 19:53:39');
+INSERT INTO poll_db.org_categories (id, name, created_at, updated_at) VALUES (3, '{"uz_Latn":"Fermer xo''jaliklari"}', '2022-07-07 19:53:38', '2022-07-07 19:53:39');
+INSERT INTO poll_db.org_categories (id, name, created_at, updated_at) VALUES (4, '{"uz_Latn":"Banklar"}', '2022-07-07 19:53:38', '2022-07-07 19:53:39');
+INSERT INTO poll_db.org_categories (id, name, created_at, updated_at) VALUES (5, '{"uz_Latn":"Xususiy korxonalar"}', '2022-07-07 19:53:38', '2022-07-07 19:53:39');
+INSERT INTO poll_db.org_categories (id, name, created_at, updated_at) VALUES (6, '{"uz_Latn":"Ma''suliyati cheklangan jamiyatlar (MCHJ)"}', '2022-07-07 19:53:38', '2022-07-07 19:53:39');
+INSERT INTO poll_db.org_categories (id, name, created_at, updated_at) VALUES (7, '{"uz_Latn":"Unitar korxonalar"}', '2022-07-07 19:53:38', '2022-07-07 19:53:39');
+INSERT INTO poll_db.org_categories (id, name, created_at, updated_at) VALUES (8, '{"uz_Latn":"Aksiyadorlik jamiyatlari (AJ)"}', '2022-07-07 19:53:38', '2022-07-07 19:53:39');
+INSERT INTO poll_db.org_categories (id, name, created_at, updated_at) VALUES (9, '{"uz_Latn":"Sog''liqni saqlash "}', '2022-07-07 19:53:38', '2022-07-07 19:53:39');
+INSERT INTO poll_db.org_categories (id, name, created_at, updated_at) VALUES (10, '{"uz_Latn":"Madaniyat bo''limlari"}', '2022-07-07 19:53:38', '2022-07-07 19:53:39');
