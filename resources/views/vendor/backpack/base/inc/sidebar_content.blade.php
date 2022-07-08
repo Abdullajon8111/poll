@@ -22,10 +22,11 @@
 
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('university') }}'><i class='nav-icon la la-university'></i> Universities</a></li>
 
+@role('admin', 'admin')
+
 <hr class="w-100 my-2">
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('org-univer-pivot') }}'><i class='nav-icon la la-filter'></i> Separator</a></li>
 
-@role('admin', 'admin')
 <hr class="w-100 my-2">
 <li class="nav-item nav-dropdown">
     <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-users"></i> Authentication</a>

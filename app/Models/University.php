@@ -47,27 +47,6 @@ class University extends Model
 
     protected $guarded = ['id'];
 
-    protected static function boot()
-    {
-        parent::boot();
-
-        self::creating(function (University $model) {
-            $slug = $model->slug;
-            if (!Str::length($slug))
-                $slug = Str::random();
-
-            $model->slug = Str::kebab($slug);
-        });
-
-        self::updating(function (University $model) {
-            $slug = $model->slug;
-            if (!Str::length($slug))
-                $slug = Str::random();
-
-            $model->slug = Str::kebab($slug);
-        });
-    }
-
     public function admins()
     {
         return $this->belongsToMany(AdminUser::class, 'admin_user_university');

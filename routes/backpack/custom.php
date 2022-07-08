@@ -34,8 +34,13 @@ Route::group([
     });
 
     Route::crud('university', 'UniversityCrudController');
+
+    Route::get('university/generate-url', 'UniversityCrudController@generateUrl')->name('admin.university.generate-url');
+    Route::get('university/change-status-all', 'UniversityCrudController@changeStatusAll')->name('change-status-all');
+
     Route::get('get-university-list', 'UniversityCrudController@surveys')->name('admin.surveys.list');
     Route::get('change-university-enabled-status/{university}', 'UniversityCrudController@changeStatus')->name('admin.university.changeStatus');
+
     Route::crud('org-category', 'OrgCategoryCrudController');
     Route::crud('univer-category', 'UniverCategoryCrudController');
     Route::crud('org-univer-pivot', 'OrgUniverPivotCrudController');
