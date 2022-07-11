@@ -64,6 +64,6 @@ class University extends Model
 
     public function organizations()
     {
-        return $this->belongsToMany(Organization::class, 'org_univer_pivot');
+        return $this->belongsToMany(Organization::class, 'org_univer_pivot', 'org_category_id', 'univer_category_id');
     }
 }

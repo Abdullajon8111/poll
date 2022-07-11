@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EntryController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\SurveyEntryController;
@@ -23,7 +24,8 @@ Route::redirect('login', 'awoi/login');
 
 
 Route::middleware('auth:org')->group(function () {
-    Route::view('dashboard', 'dashboard')->name('dashboard');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
     Route::get('survey', [SurveyController::class, 'index'])->name('survey.index');
     Route::get('survey/{university:slug}/{survey}', [SurveyController::class, 'show'])->name('survey.show');
     Route::post('survey-entries/{university:slug}/{survey}', [SurveyEntryController::class, 'store'])->name('survey-entry.store');

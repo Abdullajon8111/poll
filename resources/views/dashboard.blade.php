@@ -1,7 +1,13 @@
 <?php
-    /** @var $org Organization */
-    use App\Models\Organization;
-    $org = auth('org')->user();
+/** @var $org Organization */
+/** @var $survey Survey */
+
+/** @var $links array */
+
+use App\Models\Organization;
+use App\Models\Survey;
+
+$org = auth('org')->user();
 ?>
 
 
@@ -38,4 +44,20 @@
             </table>
         </div>
     </div>
+
+    @if($survey)
+        <div class="card my-4">
+            <div class="card-body">
+                <ul>
+                    @foreach($links as $link)
+                        <li>
+                            <span>({{ $link['survey_name'] }})</span>
+                            <span>{{ $link['univer_name'] }}</span>
+                            <a href="{{ $link['link'] }}">{{ $link['link'] }}</a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    @endif
 </x-app-layout>
