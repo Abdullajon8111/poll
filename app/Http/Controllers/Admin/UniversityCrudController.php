@@ -97,18 +97,31 @@ class UniversityCrudController extends CrudController
 
     protected function setupListOperation()
     {
-        CRUD::column('id');
+        $this->crud->query = University::with(['entries', 'entries.participant']);
+
+        CRUD::column('#')->type('row_number');
 
         CRUD::column('name')->type('view')->view('admin.university.columns.name');
-        CRUD::column('slug');
+        CRUD::column('category_id');
+//        CRUD::column('slug');
         CRUD::column('enabled')->type('view')->view('admin.university.columns.toggle');
         CRUD::column('url')->type('view')->view('admin.university.columns.url');
-
 
         CRUD::addButton('top', 'generate_url', 'view', 'university.buttons.generate');
         CRUD::addButton('top', 'all_on_off', 'view', 'university.buttons.all_on_off');
 
         $this->isOperator();
+
+        session(['surveys' => Survey::all()]);
+        CRUD::addFilter([
+            'name' => 'survey',
+            'type' => 'select2',
+            'label' => __('Survey')
+        ], Survey::pluck('name', 'id')->toArray(), function ($value) {
+            session(['surveys' => Survey::whereId($value)->get()]);
+        });
+
+        CRUD::addColumn(['name' => 'count_table', 'type' => 'view', 'view' => 'university.columns.count_table']);
     }
 
     private function isOperator()

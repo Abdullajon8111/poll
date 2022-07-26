@@ -66,6 +66,13 @@ class Organization extends Authenticatable
 
     public function universities()
     {
-        return $this->belongsToMany(University::class, 'org_univer_pivot', 'univer_category_id', 'org_category_id');
+        return $this->belongsToMany(
+            University::class,
+            'org_univer_pivot',
+            'org_category_id',
+            'univer_category_id',
+            'org_category_id',
+            'univer_category_id'
+        );
     }
 }
