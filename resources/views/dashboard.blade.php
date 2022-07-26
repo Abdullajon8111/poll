@@ -53,7 +53,10 @@ $org = auth('org')->user();
                         <li>
                             <span>({{ $link['survey_name'] }})</span>
                             <span>{{ $link['univer_name'] }}</span>
+                            <br>
                             <a href="{{ $link['link'] }}">{{ $link['link'] }}</a>
+                            <br>
+                            <br>
                         </li>
                     @endforeach
                 </ul>
