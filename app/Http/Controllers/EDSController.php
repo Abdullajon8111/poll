@@ -64,7 +64,7 @@ class EDSController extends Controller
 
         curl_close($curl);
         echo $response;
-
+        dump($token);
         dd($response);
     }
 }
