@@ -48,7 +48,7 @@ class EDSController extends Controller
             $this->client_secret
         )->post("https://apiid.tdi.uz/oauth/token?grant_type=authorization_code&state={$state}&code={$code}");
 
-        dd($response);
+        dd($response->json());
     }
 
     public function callback2()
