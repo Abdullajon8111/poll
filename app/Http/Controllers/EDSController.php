@@ -42,6 +42,19 @@ class EDSController extends Controller
     {
         $code = request('code');
         $state = request('state');
+
+        $response = Http::withBasicAuth(
+            $this->client_id,
+            $this->client_secret
+        )->post("https://apiid.tdi.uz/oauth/token?grant_type=authorization_code&state={$state}&code={$code}");
+
+        dd($response);
+    }
+
+    public function callback2()
+    {
+        $code = request('code');
+        $state = request('state');
         $token = base64_encode("{$this->client_id}:{$this->client_secret}");
 
         $curl = curl_init();
@@ -63,8 +76,5 @@ class EDSController extends Controller
         $response = curl_exec($curl);
 
         curl_close($curl);
-        echo $response;
-        dump($token);
-        dd($response);
     }
 }
