@@ -6,6 +6,7 @@ use App\Http\Requests\UniversityChangeStatusRequest;
 use App\Http\Requests\UniversityRequest;
 use App\Models\AdminUser;
 use App\Models\Survey;
+use App\Models\UniverCategory;
 use App\Models\University;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -119,6 +120,22 @@ class UniversityCrudController extends CrudController
             'label' => __('Survey')
         ], Survey::pluck('name', 'id')->toArray(), function ($value) {
             session(['surveys' => Survey::whereId($value)->get()]);
+        });
+
+        CRUD::addFilter([
+            'name' => 'name',
+            'type' => 'text',
+            'label' => __('Name')
+        ], null, function ($value) {
+            $this->crud->addClause('where', 'name', 'like', "%{$value}%");
+        });
+
+        CRUD::addFilter([
+            'name' => 'category_id',
+            'type' => 'select2',
+            'label' => __('Category')
+        ], UniverCategory::pluck('name', 'id')->toArray(), function ($value) {
+            $this->crud->addClause('where', 'univer_category_id', '=', $value);
         });
 
         CRUD::addColumn(['name' => 'count_table', 'type' => 'view', 'view' => 'university.columns.count_table']);
