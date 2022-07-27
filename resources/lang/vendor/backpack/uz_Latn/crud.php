@@ -1,6 +1,6 @@
 <?php
 
-return [
+$old = [
 
     /*
     |--------------------------------------------------------------------------
@@ -178,3 +178,164 @@ return [
     // returned when no translations found in select inputs
     'empty_translations' => '(пусто)',
 ];
+
+$new = [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Backpack Crud Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are used by the CRUD interface.
+    | You are free to change them to anything
+    | you want to customize your views to better match your application.
+    |
+    */
+
+    // Forms
+    'save_action_save_and_new' => 'Saqlash va yangi element',
+    'save_action_save_and_edit' => 'Ushbu narsani saqlash va tahrirlash',
+    'save_action_save_and_back' => "Saqlash va qaytarish",
+    'save_action_changed_notification' => "Saqlashdan so'ng odatiy xatti o'zgartirilgan.",
+
+    // Create form
+    'add'                 => "Qo'shish",
+    'back_to_all'         => "Hammaga qaytish",
+    'cancel'              => "Bekor qilish",
+    'add_a_new'           => "Yangi qo'shish",
+
+    // Edit form
+    'edit'                 => "Tahrirlash",
+    'save'                 => "Saqlash",
+
+    // Revisions
+    'revisions'            => "Yangilanishlar",
+    'no_revisions'         => "Hech qanday tahrir topilmadi",
+    'created_this'         => "Buni yaratdi",
+    'changed_the'          => "o'zgardi",
+    'restore_this_value'   => 'Ushbu qiymatni tiklash',
+    'from'                 => 'dan',
+    'to'                   => 'to',
+    'undo'                 => 'Bekor qilish',
+    'revision_restored'    => 'Tekshiruv muvaffaqiyatli tiklandi',
+    'guest_user'           => "Mehmonlar uchun foydalanuvchi",
+
+    // Translatable models
+    'edit_translations' => "O'ZGARTIRIShLAR TAYYORLASH",
+    'language'          => "Til",
+
+    // CRUD table view
+    'all'                       => "Hammasi",
+    'in_the_database'           => "ma'lumotlar bazasida",
+    'list'                      => "Ro'yxat",
+    'actions'                   => 'Amallar',
+    'preview'                   => "Ko'rib chiqish",
+    'delete'                    => "O'chirish",
+    'admin'                     => "Admin",
+    'details_row'               => "Bu batafsil qator. O'zingiz xohlagan tarzda o'zgartiring. ",
+    'details_row_loading_error' => "Ma'lumotni yuklashda xatolik yuz berdi. Qayta urinib ko'ring. ",
+
+    // Confirmation messages and bubbles
+    'delete_confirm'                              => "Ushbu elementni o'chirmoqchimisiz?",
+    'delete_confirmation_title'                   => "O'chirildi",
+    'delete_confirmation_message'                 => "Element muvaffaqiyatli o'chirildi.",
+    'delete_confirmation_not_title'               => "O'chirilmagan",
+    'delete_confirmation_not_message'             => "Xatolik yuz berdi, sizning elementingiz o'chirilmagan bo'lishi mumkin.",
+    'delete_confirmation_not_deleted_title'       => "O'chirilmadi",
+    'delete_confirmation_not_deleted_message'     => "Hech narsa bo'lmadi. Sizning elementingiz xavfsiz. ",
+
+    // Bulk actions
+    'bulk_no_entries_selected_title' => "Hech qanday yozuv tanlanmagan",
+    'bulk_no_entries_selected_message' => 'Iltimos, ularga bir yoki bir nechta narsani tanlang, aks holda ularni ommaviy harakatlar bajaring.',
+
+    // Bulk confirmation
+
+    'bulk_delete_are_you_sure' => "Haqiqatan ham ularni o'chirib tashlamoqchimisiz :number yozuvlari?",
+    'bulk_delete_sucess_title' => "Yozuvlar o'chirildi",
+    'bulk_delete_sucess_message' => "elementlari o'chirildi",
+    'bulk_delete_error_title' => "O''chirib bo''lmadi",
+    'bulk_delete_error_message' => "Bir yoki bir nechta element o'chirib bo'lmadi",
+
+    // Ajax errors
+    'ajax_error_title' => "Xato",
+    'ajax_error_text'  => 'Sahifani yuklashda xatolik yuz berdi. Iltimos, sahifani yangilang. ',
+
+    // DataTables translation
+    'emptyTable'     => "Jadvalda ma'lumotlar yo'q",
+    'info'           => "_TOTAL_ yozuvlari _START_dan _END_ ga qadar ko'rsatiladi",
+    'infoEmpty'      => "0 ta yozuvdan 0 to 0 gacha ko'rsatilmoqda",
+    'infoFiltered'   => '(_MAX_ jami yozuvlardan filtrlangan)',
+    'infoPostFix'    => '',
+    'thousands'      => ',',
+    'lengthMenu'     => '_MENU_ ta sahifa uchun yozuvlar',
+    'loadingRecords' => "Yuklanmoqda ...",
+    'processing'     => 'Ishlov berish ...',
+    'search'         => 'Qidirmoq: ',
+    'zeroRecords'    => 'Hech narsa topilmadi',
+    'paginate'       => [
+        'first'    => "Birinchi",
+        'last'     => "Oxirgi",
+        'next'     => 'Keyingi',
+        'previous' => "Oldingi",
+    ],
+    'aria' => [
+        'sortAscending'  => ':column ko\'tarilishi uchun faollashtirish',
+        'sortDescending' => ': ustunni kamaytirish uchun faollashtirish',
+    ],
+    'export' => [
+        'export'            => 'Export',
+        'copy'              => 'Copy',
+        'excel'             => 'Excel',
+        'csv'               => 'CSV',
+        'pdf'               => 'PDF',
+        'print'             => 'Print',
+        'column_visibility' => 'Column visibility',
+    ],
+
+    // global crud - errors
+    'unauthorized_access' => "Ruxsatsiz kirish - ushbu sahifani ko'rish uchun kerakli ruxsatlarga ega emassiz.",
+    'please_fix' => 'Iltimos, quyidagi xatoliklarni tuzating:',
+
+    // global crud - success / error notification bubbles
+    'insert_success' => "Mavzu muvaffaqiyatli qo'shildi.",
+    'update_success' => "Element muvaffaqiyatli o'zgartirildi.",
+
+    // CRUD reorder view
+    'reorder'                      => "Qayta tartiblash",
+    'reorder_text'                 => 'Qayta tartibga solish uchun drag va tomoshadan foydalaning.',
+    'reorder_success_title'        => "Bajarildi",
+    'reorder_success_message'      => 'Sizning buyurtmangiz saqlandi.',
+    'reorder_error_title'          => "Xato",
+    'reorder_error_message'        => "Buyurtmani saqlab bo'lmadi.",
+
+    // CRUD yes/no
+    'yes' => "Ha",
+    'no' => "Yo'q",
+
+    // CRUD filters navbar view
+    'filters' => "Filtrlar",
+    'toggle_filters' => 'Filtrni almashtirish',
+    'remove_filters' => 'Filtrni olib tashlash',
+
+    // Fields
+    'browse_uploads' => "Yuklab olishlarni ko'rib chiqish",
+    'select_all' => 'Hammasini belgilash',
+    'select_files' => "Fayllarni tanlang",
+    'select_file' => 'Faylni tanlang',
+    'clear' => "Toza",
+    'page_link' => "Sahifa havolasi",
+    'page_link_placeholder' => 'http://example.com/your-desired-page',
+    'internal_link' => 'Ichki aloqa',
+    'internal_link_placeholder ' => ' Ichki qavs. Misol: \':url \' \'uchun \' admin / page \ \'',
+    'external_link' => 'External link',
+    'choose_file' => 'Faylni tanlang',
+
+    //Table field
+    'table_cant_add' => 'Yangi qo\'shilmaydi :entity',
+    'table_max_reached' => 'Maksimal son :max yetdi',
+
+    // File manager
+    'file_manager' => "Fayl menejeri",
+];
+
+return $new;

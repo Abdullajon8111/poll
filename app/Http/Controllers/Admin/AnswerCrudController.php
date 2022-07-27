@@ -47,7 +47,7 @@ class AnswerCrudController extends CrudController
 
         CRUD::column('survey');
         CRUD::column('entry_id')->type('number');
-        CRUD::column('question_id');
+        CRUD::column('question_id')->type('view')->view('answers.column.question');
         CRUD::column('name');
         CRUD::column('value');
 

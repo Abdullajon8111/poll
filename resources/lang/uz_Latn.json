@@ -3,5 +3,22 @@
     "View previous answers": "Oldingi javoblarni ko'rish",
     "Submit another reply": "Boshqa yana javob yuborish",
 
-    "How to determine?": "Qanday aniqlash mumkin?"
+    "How to determine?": "Qanday aniqlash mumkin?",
+
+    "Surveys": "So'rovnomalar",
+    "Sections": "Bo'limlar",
+    "Questions": "Savollar",
+    "Entries": "Qatnashuvlar",
+    "Answers": "Javoblar",
+    "Operators": "Operatorlar",
+    "Org categories": "Kategoriyalar",
+    "Organizations": "Tashkilotlar",
+    "Univer categories": "Kategoriyalar",
+    "Universities": "Universitetlar",
+
+    "Name": "Nomi",
+    "Enabled": "Yoqilgan",
+    "Accept guest entries": "Mehmonlarning qatnashishi",
+    "Limit per participant": "Ishtirokchi chegarasi",
+    "Expired": "Tugash muddati"
 }
