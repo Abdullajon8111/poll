@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Http;
 use Str;
 
 class EDSController extends Controller
@@ -28,7 +29,7 @@ class EDSController extends Controller
         $this->id_tdi_url = env('ID_TDI_URL');
         $this->client_id = env('ID_TDI_CLIENT_ID');
         $this->client_secret = env('ID_TDI_CLIENT_SECRET');
-        $this->state = Str::random();
+        $this->state = Str::random(6);
     }
 
     public function redirect()
@@ -41,9 +42,28 @@ class EDSController extends Controller
     {
         $code = request('code');
         $state = request('state');
+        $token = base64_encode("{$this->client_id}:{$this->client_secret}");
 
-        $client = \Http::withBasicAuth($this->client_id, $this->client_secret);
-        $response = $client->post("https://apiid.tdi.uz/oauth/token?grand_type=authorization_code&state={$state}&code={$code}", []);
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://apiid.tdi.uz/oauth/token?grant_type=authorization_code&state={$state}&code={$code}",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: Basic NVhiMXF0VFpsTFNtRHdiVHFqQzQ6ZmRqa0JsQ2RkMHU5V2xiUWhRZzY='
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        echo $response;
 
         dd($response);
     }

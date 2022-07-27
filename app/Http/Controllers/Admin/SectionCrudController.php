@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Admin\Filters\BaseFilter;
-use App\Http\Controllers\Admin\Filters\SurveyFilter;
 use App\Http\Requests\SectionRequest;
 use App\Models\Survey;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
@@ -21,17 +19,18 @@ class SectionCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Section::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/section');
-        CRUD::setEntityNameStrings('section', 'sections');
+        CRUD::setEntityNameStrings('', __('Sections'));
     }
 
     protected function setupListOperation()
     {
-        CRUD::column('survey_id');
-        CRUD::column('name')->type('text');
+        CRUD::column('survey_id')->label(__('Survey'));
+        CRUD::column('name')->type('text')->label(__('Name'));
 
         CRUD::addFilter([
             'name' => 'survey',
-            'type' => 'dropdown'
+            'type' => 'dropdown',
+            'label' => __('Survey')
         ],
             Survey::pluck('name', 'id')->toArray(),
             function ($value) {

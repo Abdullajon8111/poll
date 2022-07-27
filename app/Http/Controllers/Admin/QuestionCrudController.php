@@ -25,8 +25,8 @@ class QuestionCrudController extends CrudController
 
     protected function setupListOperation()
     {
-        CRUD::column('survey_id');
-        CRUD::column('section_id');
+        CRUD::column('survey_id')->label(__('Survey'));
+        CRUD::column('section_id')->label(__('Section'));
         CRUD::column('content');
         CRUD::column('type');
         CRUD::column('options');
