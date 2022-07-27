@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EDSController;
 use App\Http\Controllers\EntryController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\SurveyEntryController;
@@ -21,7 +22,12 @@ Route::redirect('/', 'login');
 
 require __DIR__ . '/auth.php';
 Route::redirect('login', 'awoi/login');
+Route::redirect('awoi/login', '/eds/login');
 
+
+Route::view('eds/login', 'eds.login')->name('eds.login.index');
+Route::get('eds/login/redirect', [EDSController::class, 'redirect'])->name('eds.login.redirect');
+Route::get('callback/id-tdi', [EDSController::class, 'callback'])->name('eds.login.callback');
 
 Route::middleware('auth:org')->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
