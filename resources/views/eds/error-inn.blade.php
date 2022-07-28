@@ -7,7 +7,7 @@
         </x-slot>
 
         <div class="card-body">
-            <div class="alert alert-danger">
+            <div class="alert alert-danger text-center">
                 <i class="la la-key"></i>
                 {{ __('Stir') }} {{ __('Not fount') }}
             </div>
