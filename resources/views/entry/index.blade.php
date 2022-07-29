@@ -64,10 +64,10 @@ use App\Models\University;
             <table class="table table-hover">
                 <thead class="bg-dark text-white">
                 <tr>
-                    <th>{{ __('ID') }}</th>
+                    <th>{{ __('#') }}</th>
                     <th>{{ __('Survey') }}</th>
                     <th>{{ __('University') }}</th>
-                    <th>{{ __('Expired') }}</th>
+                    <th>{{ __('Time') }}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -76,7 +76,7 @@ use App\Models\University;
                         <td>{{ $entries->firstItem() + $loop->index }}</td>
                         <td>{{ $entry->survey->name }}</td>
                         <td>{{ $entry->university->name ?? '' }}</td>
-                        <td>{{ $entry->survey->expired_at ?? '' }}</td>
+                        <td>{{ $entry->created_at->format('d.m.Y H:i:s') ?? '' }}</td>
                     </tr>
                 @endforeach
                 </tbody>

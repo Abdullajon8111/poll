@@ -4,6 +4,11 @@
     "Submit another reply": "Boshqa yana javob yuborish",
 
     "How to determine?": "Qanday aniqlash mumkin?",
+    "Select an attribute": "Tanlang",
+    "Log Out": "Chiqish",
+    "Search": "Qidirmoq",
+    "Time": "Vaqt",
+    "Language": "Til",
 
     "Surveys": "So'rovnomalar",
     "Survey": "So'rovnoma",
@@ -16,10 +21,15 @@
     "Organizations": "Tashkilotlar",
     "Univer categories": "Kategoriyalar",
     "Universities": "Universitetlar",
+    "University": "Universitet",
+    "Separator": "Ajratuvchi",
 
     "Name": "Nomi",
     "Enabled": "Yoqilgan",
     "Accept guest entries": "Mehmonlarning qatnashishi",
     "Limit per participant": "Ishtirokchi chegarasi",
-    "Expired": "Tugash muddati"
+    "Expired": "Tugash muddati",
+
+    "Number of participation": "Ishtirok soni",
+    "Participations": "Ishtiroklar"
 }

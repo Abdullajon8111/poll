@@ -6,5 +6,9 @@
 @endphp
 
 <div>
-    {!! $answer->question->content !!}
+    @if(isset($answer->question))
+        {!! $answer->question->content !!}
+    @else
+        -
+    @endif
 </div>

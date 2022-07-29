@@ -25,7 +25,7 @@
 @role('admin', 'admin')
 
 <hr class="w-100 my-2">
-<li class='nav-item'><a class='nav-link' href='{{ backpack_url('org-univer-pivot') }}'><i class='nav-icon la la-filter'></i> {{ __('Organizations') }}</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('org-univer-pivot') }}'><i class='nav-icon la la-filter'></i> {{ __('Separator') }}</a></li>
 
 <hr class="w-100 my-2">
 <li class="nav-item nav-dropdown">

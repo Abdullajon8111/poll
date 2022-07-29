@@ -27,7 +27,7 @@ class QuestionCrudController extends CrudController
     {
         CRUD::column('survey_id')->label(__('Survey'));
         CRUD::column('section_id')->label(__('Section'));
-        CRUD::column('content');
+        CRUD::column('content')->type('view')->view('questions.column.content');
         CRUD::column('type');
         CRUD::column('options');
         CRUD::column('rules');

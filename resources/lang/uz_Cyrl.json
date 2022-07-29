@@ -3,5 +3,33 @@
     "View previous answers": "Олдинги жавобларни кўриш",
     "Submit another reply": "Бошқа яна жавоб юбориш",
 
-    "How to determine?": "Қандай аниқлаш мумкин?"
+    "How to determine?": "Қандай аниқлаш мумкин?",
+    "Select an attribute": "Танланг",
+    "Log Out": "Чиқиш",
+    "Search": "Қидирмоқ",
+    "Time": "Вақт",
+    "Language": "Тил",
+
+    "Surveys": "Сўровномалар",
+    "Survey": "Сўровнома",
+    "Sections": "Бўлимлар",
+    "Questions": "Саволлар",
+    "Entries": "Қатнашувлар",
+    "Answers": "Жавоблар",
+    "Operators": "Операторлар",
+    "Org categories": "Категориялар",
+    "Organizations": "Ташкилотлар",
+    "Univer categories": "Категориялар",
+    "Universities": "Университетлар",
+    "University": "Университет",
+    "Separator": "Ажратувчи",
+
+    "Name": "Номи",
+    "Enabled": "Ёқилган",
+    "Accept guest entries": "Меҳмонларнинг қатнашиши",
+    "Limit per participant": "Иштирокчи чегараси",
+    "Expired": "Тугаш муддати",
+
+    "Number of participation": "Иштирок сони",
+    "Participations": "Иштироклар"
 }

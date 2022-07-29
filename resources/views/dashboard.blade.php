@@ -18,49 +18,84 @@ $org = auth('org')->user();
         </h2>
     </x-slot>
 
-    <div class="card my-4">
-        <div class="card-body">
-            <table class="table table-striped">
-                <tr>
-                    <td><strong>{{ __('Ktut') }}:</strong></td>
-                    <td>{{ $org->ktut }}</td>
-                </tr>
+    <div class="row">
 
-                <tr>
-                    <td><strong>{{ __('Stir') }}:</strong></td>
-                    <td>{{ $org->stir }}</td>
-                </tr>
+        <div class="col-7">
+            @if($survey)
+                <div class="card">
+                    <div class="card-header bg-dark">
+                        <div class="text-white">{{ Str::ucfirst($survey->name)  }}</div>
+                    </div>
+                    <div class="card-body mt-1 p-0">
+                        <table class="table table-sm table-striped table-hover" style="cursor: pointer">
+                            <thead>
+                            <tr>
+                                <th>{{ __('Universities') }}</th>
+                                <th width="100">{{ __('Number of participation') }}</th>
+                                <th>{{ __('backpack::crud.actions') }}</th>
+                            </tr>
+                            </thead>
 
-                <tr>
-                    <td><strong>{{ __('Name') }}:</strong></td>
-                    <td>{{ $org->name }}</td>
-                </tr>
+                            <tbody>
+                            @foreach($links as $link)
+                                <tr ondblclick="window.location.href = '{{ $link['link'] }}'">
+                                    <td>{{ $link['univer_name'] }}</td>
+                                    <td>
+                                        <div class="btn btn-dark">
+                                            {{ $link['entry_count'] }}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="{{ $link['link'] }}" class="btn btn-info text-white">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
-                <tr>
-                    <td><strong>{{ __('Address') }}:</strong></td>
-                    <td>{{ $org->address }}</td>
-                </tr>
+            @endif
+        </div>
 
-            </table>
+        <div class="col-5">
+            <div class="card">
+                <div class="card-header bg-dark">
+                    <div class="text-white">{{ $org->name }}</div>
+                </div>
+                <div class="card-body mt-1 p-0">
+                    <table id="universities-table" class="table table-striped">
+                        <tr>
+                            <td><strong>{{ __('Ktut') }}:</strong></td>
+                            <td>{{ $org->ktut }}</td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>{{ __('Stir') }}:</strong></td>
+                            <td>{{ $org->stir }}</td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>{{ __('Address') }}:</strong></td>
+                            <td>{{ $org->address }}</td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 
-    @if($survey)
-        <div class="card my-4">
-            <div class="card-body">
-                <ul>
-                    @foreach($links as $link)
-                        <li>
-                            <span>({{ $link['survey_name'] }})</span>
-                            <span>{{ $link['univer_name'] }}</span>
-                            <br>
-                            <a href="{{ $link['link'] }}">{{ $link['link'] }}</a>
-                            <br>
-                            <br>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    @endif
+
+    <x-slot name="js">
+        <script>
+            $(document).ready( function () {
+                $('#universities-table').DataTable();
+            } );
+        </script>
+
+    </x-slot>
+
 </x-app-layout>

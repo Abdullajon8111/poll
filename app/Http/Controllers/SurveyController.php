@@ -12,7 +12,7 @@ class SurveyController extends Controller
     {
         $surveys = Survey::query()
             ->whereEnabled(true)
-            ->where('expired', '>=', date('Y-m-d'))
+            ->where('expired', '>', date('Y-m-d'))
             ->get();
 
         return view('surveys.index', compact('surveys'));

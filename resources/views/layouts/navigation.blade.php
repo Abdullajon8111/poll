@@ -12,11 +12,13 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <x-nav-link class="nav-link" href="{{ route('dashboard') }}" :active="request()->segment(1) == 'dashboard'">
+                    <i class="fa fa-home"></i>
                     {{ __('Dashboard') }}
                 </x-nav-link>
 
                 <x-nav-link class="nav-link" href="{{ route('entry.index') }}" :active="request()->segment(1) == 'entry'">
-                    {{ __('Entry') }}
+                    <i class="fa fa-list"></i>
+                    {{ __('Participations') }}
                 </x-nav-link>
             </ul>
 
@@ -25,24 +27,29 @@
 
                 <!-- Settings Dropdown -->
                 @auth('org')
-                    <x-dropdown id="settingsDropdown">
-                        <x-slot name="trigger">
-                            {{ Auth::guard('org')->user()->name }}
-                        </x-slot>
 
-                        <x-slot name="content">
-                            <!-- Authentication -->
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
+                    <form id="log-out-form" method="POST" action="{{ route('logout') }}">
+                        @csrf
+                    </form>
 
-                                <x-dropdown-link :href="route('logout')"
-                                                 onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                    {{ __('Log Out') }}
-                                </x-dropdown-link>
-                            </form>
-                        </x-slot>
-                    </x-dropdown>
+                    <span class="btn">{{ Auth::guard('org')->user()->name }}</span>
+
+                    <div class="dropdown">
+                        <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-globe"></i>
+                            {{ __('Language') }}
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            @foreach(config('backpack.crud.locales') as $id => $lang)
+                                <a href="{{ route('change-lang', ['langcode' => $id]) }}" class="dropdown-item">{{ $lang }}</a>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <button class="btn btn-link" onclick="event.preventDefault(); $('#log-out-form').submit();">
+                        <i class="fa fa-sign-out-alt"></i>
+                        {{ __('Log Out') }}
+                    </button>
                 @endauth
             </ul>
         </div>
