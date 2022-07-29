@@ -31,5 +31,13 @@
     "Expired": "Tugash muddati",
 
     "Number of participation": "Ishtirok soni",
-    "Participations": "Ishtiroklar"
+    "Participations": "Ishtiroklar",
+
+    "Please login to join this survey": "Ushbu so'rovnomada ishtirok etish uchun tizimga kiring",
+    "You last submitted your answers": "Siz oxirgi marta javoblaringizni yuborgansiz",
+
+    "We only accept": "Biz faqat qabul qilamiz",
+    "per participant": "har bir ishtirokchiga",
+    "Submit": "Yuborish",
+    "entry": "ishtirok"
 }

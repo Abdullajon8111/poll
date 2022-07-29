@@ -31,5 +31,13 @@
     "Expired": "Истекший",
 
     "Number of participation": "Количество участников",
-    "Participations": "Участие"
+    "Participations": "Участие",
+
+    "Please login to join this survey": "Войдите, чтобы принять участие в этом опросе",
+    "You last submitted your answers": "Вы отправили свои ответы в прошлый раз",
+
+    "We only accept": "Мы принимаем только",
+    "per participant": "каждому участнику",
+    "Submit": "Отправка",
+    "entry": "участие"
 }
