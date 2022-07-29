@@ -21,26 +21,7 @@
                 $.post(url, data)
 
                     .done(response => {
-                        swal.fire({
-                            customClass: {
-                                confirmButton: 'btn btn-dark mr-3',
-                                denyButton: 'btn btn-info'
-                            },
-
-                            title: '{{ __('Success') }}',
-                            icon: 'success',
-                            showCancelButton: false,
-                            showDenyButton: true,
-                            confirmButtonText: '{{ __('View previous answers') }}',
-                            denyButtonText: '{{ __('Submit another reply') }}'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                window.location = '{{ route('entry.index') }}'
-                            } else if (result.isDenied) {
-                                $('#survey-form')[0].reset()
-                                window.location.reload()
-                            }
-                        })
+                        new_version()
                     })
 
                     .fail(error => {
@@ -60,6 +41,43 @@
                         }
                     })
             })
+
+            function old_version() {
+                swal.fire({
+                    customClass: {
+                        confirmButton: 'btn btn-dark mr-3',
+                        denyButton: 'btn btn-info'
+                    },
+
+                    title: '{{ __('Success') }}',
+                    icon: 'success',
+                    showCancelButton: false,
+                    showDenyButton: true,
+                    confirmButtonText: '{{ __('View previous answers') }}',
+                    denyButtonText: '{{ __('Submit another reply') }}'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location = '{{ route('entry.index') }}'
+                    } else if (result.isDenied) {
+                        $('#survey-form')[0].reset()
+                        window.location.reload()
+                    }
+                })
+            }
+
+            function new_version() {
+                swal.fire({
+                    customClass: {
+                        confirmButton: 'btn btn-dark',
+                    },
+
+                    title: '{{ __('Success') }}',
+                    icon: 'success',
+                    confirmButtonText: '{{ __('Return to home page') }}',
+                }).then((result) => {
+                    window.location = '{{ route('dashboard') }}'
+                })
+            }
         </script>
     </x-slot>
 </x-app-layout>
