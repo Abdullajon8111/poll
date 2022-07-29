@@ -31,6 +31,8 @@ class DashboardController extends Controller
             foreach ($universities as $university) {
                 $link = [];
                 $link['link'] = url("survey/{$university->slug}/{$survey->id}");
+                $link['univer_slug'] = $university->slug;
+                $link['survey_id'] = $survey->id;
                 $link['univer_name'] = $university->name;
                 $link['survey_name'] = $survey->name;
                 $link['entry_count'] = $entries_count[$university->id] ?? 0;

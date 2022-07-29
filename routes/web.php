@@ -38,6 +38,8 @@ Route::middleware(['auth:org', 'language'])->group(function () {
 
     Route::get('survey', [SurveyController::class, 'index'])->name('survey.index');
     Route::get('survey/{university:slug}/{survey}', [SurveyController::class, 'show'])->name('survey.show');
+    Route::get('survey/check/{university:slug}/{survey}', [SurveyController::class, 'check'])->name('survey.check');
+
     Route::post('survey-entries/{university:slug}/{survey}', [SurveyEntryController::class, 'store'])->name('survey-entry.store');
 
     Route::get('entry', [EntryController::class, 'index'])->name('entry.index');

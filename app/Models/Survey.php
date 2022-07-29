@@ -120,6 +120,8 @@ class Survey extends Model implements SurveyContract
      */
     public function limitPerParticipant()
     {
+        return ;
+
         if ($this->acceptsGuestEntries()) {
             return;
         }

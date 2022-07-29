@@ -38,10 +38,14 @@ $org = auth('org')->user();
 
                             <tbody>
                             @foreach($links as $link)
-                                <tr ondblclick="window.location.href = '{{ $link['link'] }}'">
+                                <tr class="univer_link_row"
+                                    data-surveyid="{{ $link['survey_id'] }}"
+                                    data-universlug="{{ $link['univer_slug'] }}"
+                                    data-link="{{ $link['link'] }}"
+                                >
                                     <td>{{ $link['univer_name'] }}</td>
                                     <td>
-                                        <div class="btn btn-dark">
+                                        <div class="btn {{ $link['entry_count'] > 0 ? 'btn-success' : 'btn-dark' }}">
                                             {{ $link['entry_count'] }}
                                         </div>
                                     </td>
@@ -92,8 +96,29 @@ $org = auth('org')->user();
     <x-slot name="js">
         <script>
             $(document).ready( function () {
-                $('#universities-table').DataTable();
+                // $('#universities-table').DataTable();
+
+                $('.univer_link_row').click(function () {
+                    let url = '{{ route('survey.check', ['survey' => ':survey', 'university' => ':university']) }}'
+
+                    url = url.replaceAll(':survey', $(this).data('surveyid'))
+                        .replaceAll(':university', $(this).data('universlug'))
+
+                    $.get(url)
+                        .done(response => {
+                            if (response) {
+                                window.location.href = $(this).data('link')
+                            } else {
+                                swal.fire({
+                                    title: '{{ __('Oops...') }}',
+                                    icon: 'error',
+                                    text: '{{ __('your limit is over') }}'
+                                })
+                            }
+                        })
+                })
             } );
+
         </script>
 
     </x-slot>
