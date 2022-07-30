@@ -44,4 +44,6 @@ Route::group([
     Route::crud('org-category', 'OrgCategoryCrudController');
     Route::crud('univer-category', 'UniverCategoryCrudController');
     Route::crud('org-univer-pivot', 'OrgUniverPivotCrudController');
+
+    Route::get('statistics', 'StatisticsController@index')->name('admin.statistics.index');
 }); // this should be the absolute last line of this file

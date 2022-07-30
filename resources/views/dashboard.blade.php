@@ -110,9 +110,8 @@ $org = auth('org')->user();
                                 window.location.href = $(this).data('link')
                             } else {
                                 swal.fire({
-                                    title: '{{ __('Oops...') }}',
                                     icon: 'error',
-                                    text: '{{ __('your limit is over') }}'
+                                    title: '{{ __('your limit is over') }}'
                                 })
                             }
                         })

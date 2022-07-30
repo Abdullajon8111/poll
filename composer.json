@@ -20,7 +20,8 @@
         "laravel/ui": "^3.4",
         "matt-daneshvar/laravel-survey": "^0.2.1",
         "spatie/laravel-translatable": "^4.6",
-        "ext-curl": "*"
+        "ext-curl": "*",
+        "ext-json": "*"
     },
     "require-dev": {
         "backpack/generators": "^3.1",
