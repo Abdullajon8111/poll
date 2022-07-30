@@ -27,6 +27,10 @@
 <hr class="w-100 my-2">
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('org-univer-pivot') }}'><i class='nav-icon la la-filter'></i> {{ __('Separator') }}</a></li>
 
+
+<hr class="w-100 my-2">
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('statistics') }}'><i class='nav-icon la la-bar-chart'></i> {{ __('Statistics') }}</a></li>
+
 <hr class="w-100 my-2">
 <li class="nav-item nav-dropdown">
     <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-users"></i> Authentication</a>
@@ -48,4 +52,5 @@
         </li> --}}
     </ul>
 </li>
+
 @endrole
