@@ -48,6 +48,10 @@
                         </div>
 
                         <div class="form-group">
+
+                        </div>
+
+                        <div class="form-group">
                             <div>
                                 <button type="submit" class="btn btn-block btn-primary">
                                     {{ trans('backpack::base.login') }}
@@ -65,4 +69,8 @@
             @endif
         </div>
     </div>
+@endsection
+
+@section('after_scripts')
+
 @endsection
