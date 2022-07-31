@@ -11,6 +11,11 @@
                 <i class="la la-key"></i>
                 {{ __('Organization') }} {{ __('Not fount') }}
             </div>
+
+            <a href="{{ route('eds.login.redirect') }}" class="btn btn-info btn-block mt-3">
+                <i class="la la-key"></i>
+                {{ __('Login') }}
+            </a>
         </div>
     </x-auth-card>
 </x-guest-layout>

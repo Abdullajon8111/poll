@@ -9,7 +9,7 @@
         @endif
 
         @if($lastEntry)
-            {{ __('You last submitted your answers') }} <strong>{{ $lastEntry->created_at->diffForHumans() }}</strong>.
+{{--            {{ __('You last submitted your answers') }} <strong>{{ $lastEntry->created_at->diffForHumans() }}</strong>.--}}
         @endif
     </div>
 </div>
@@ -32,7 +32,7 @@
     @endforeach
 
     @if($eligible)
-        <button class="btn btn-dark btn-block mt-3">{{ __('Submit') }}</button>
+        <button class="btn btn-dark btn-block my-3">{{ __('Submit') }}</button>
     @endif
 @endif
 

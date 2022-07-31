@@ -9,8 +9,13 @@
         <div class="card-body">
             <div class="alert alert-danger text-center">
                 <i class="la la-key"></i>
-                {{ __('Stir') }} {{ __('Not fount') }}
+                {{ __('Stir') }} {{ __('Not found') }}
             </div>
+
+            <a href="{{ route('eds.login.redirect') }}" class="btn btn-info btn-block mt-3">
+                <i class="la la-key"></i>
+                {{ __('Login') }}
+            </a>
         </div>
     </x-auth-card>
 </x-guest-layout>

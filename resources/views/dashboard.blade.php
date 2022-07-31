@@ -30,6 +30,7 @@ $org = auth('org')->user();
                         <table class="table table-sm table-striped table-hover" style="cursor: pointer">
                             <thead>
                             <tr>
+                                <th>#</th>
                                 <th>{{ __('Universities') }}</th>
                                 <th width="100">{{ __('Number of participation') }}</th>
                                 <th>{{ __('backpack::crud.actions') }}</th>
@@ -43,6 +44,7 @@ $org = auth('org')->user();
                                     data-universlug="{{ $link['univer_slug'] }}"
                                     data-link="{{ $link['link'] }}"
                                 >
+                                    <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $link['univer_name'] }}</td>
                                     <td>
                                         <div class="btn {{ $link['entry_count'] > 0 ? 'btn-success' : 'btn-dark' }}">

@@ -1,15 +1,22 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/" class="mb-3">
+            <div class="mb-3 text-center">
                 <x-application-logo width="82" />
-            </a>
+                <h3 class="text-center mt-3">
+                    O‘ZBЕKISTON RЕSPUBLIKASI <br>
+                    VAZIRLAR MAHKAMASI HUZURIDAGI <br>
+                    TA’LIM SIFATINI NAZORAT QILISH <br>
+                    DAVLAT INSPЕKSIYASINING <br>
+                    SO‘ROVNOMA TIZIMI
+                </h3>
+            </div>
         </x-slot>
 
         <div class="card-body">
             <a href="{{ route('eds.login.redirect') }}" class="btn btn-info btn-block">
                 <i class="la la-key"></i>
-                {{ __('Login with EDS') }}
+                {{ __('Login') }}
             </a>
         </div>
     </x-auth-card>

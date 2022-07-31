@@ -166,15 +166,10 @@ return [
     'translatable_field_icon_position' => 'right', // left or right
 
     'locales' => [
-        'en' => 'English',
-        "ru" => "Russian",
-        // "uz_Arab" => "Uzbek (Arabic)",
-        // "uz_Arab_AF" => "Uzbek (Arabic, Afghanistan)",
-        "uz_Cyrl" => "Uzbek (Cyrillic)",
-        // "uz_Cyrl_UZ" => "Uzbek (Cyrillic, Uzbekistan)",
-        "uz_Latn" => "Uzbek (Latin)",
-        // "uz_Latn_UZ" => "Uzbek (Latin, Uzbekistan)",
-        // "uz" => "Uzbek",
+        'en' => 'EN',
+        "ru" => "RU",
+        "uz_Cyrl" => "УЗ",
+        "uz_Latn" => "UZ",
     ],
 
 ];

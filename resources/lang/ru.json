@@ -44,5 +44,10 @@
     "entry": "участие",
 
     "Return to home page": "Вернуться на главную страницу",
-    "your limit is over": "Ваш лимит закончился"
+    "your limit is over": "Ваш лимит закончился",
+
+    "Stir": "ИНН",
+    "Not found": "Не найден",
+    "Login": "Вход",
+    "Home page": "Главная"
 }
