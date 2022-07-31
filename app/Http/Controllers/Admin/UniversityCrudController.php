@@ -40,6 +40,7 @@ class UniversityCrudController extends CrudController
         CRUD::setEntityNameStrings('university', 'universities');
 
         CRUD::setListView('admin.university.list');
+        CRUD::enableExportButtons();
     }
 
     public function surveys()

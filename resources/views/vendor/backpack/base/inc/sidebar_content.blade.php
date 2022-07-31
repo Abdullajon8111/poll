@@ -30,6 +30,7 @@
 
 <hr class="w-100 my-2">
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('statistics') }}'><i class='nav-icon la la-bar-chart'></i> {{ __('Statistics') }}</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('all-answers') }}'><i class='nav-icon la la-bar-chart'></i> {{ __('All answers') }}</a></li>
 
 <hr class="w-100 my-2">
 <li class="nav-item nav-dropdown">

@@ -25,7 +25,7 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $updated_at
  * @property-read Collection|Answer[] $answers
  * @property-read int|null $answers_count
- * @property-read User|null $participant
+ * @property-read Organization|null $participant
  * @property-read Survey|null $survey
  * @method static Builder|Entry newModelQuery()
  * @method static Builder|Entry newQuery()

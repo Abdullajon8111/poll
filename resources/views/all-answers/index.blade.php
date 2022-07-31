@@ -1,19 +1,19 @@
 @extends(backpack_view('blank'))
 
 @php
-    use App\Models\Question;
+    use App\Models\Entry;use App\Models\Question;
     use App\Models\Survey;
 
     /** @var $survey Survey */
     /** @var $surveys Survey[] */
-    /** @var $q array */
-    /** @var $result array */
+    /** @var $entries Entry[] */
     /** @var $questions Question[] */
+    /** @var $entries_pluck array */
 
 
     $defaultBreadcrumbs = [
       trans('backpack::crud.admin') => url(config('backpack.base.route_prefix'), 'dashboard'),
-      __('Statistics') => false
+      __('Answers') => false
     ];
 
     // if breadcrumbs aren't defined in the CrudController, use the default breadcrumbs
@@ -23,7 +23,7 @@
 @section('header')
     <div class="container-fluid">
         <h2>
-            <span class="text-capitalize">{!! __('Statistics') !!}</span>
+            <span class="text-capitalize">{!! __('Answers') !!}</span>
         </h2>
     </div>
 @endsection
@@ -43,7 +43,6 @@
 @endsection
 
 @section('content')
-
     <div class="row">
         <div class="col-lg-4">
             <div class="form-group">
@@ -64,7 +63,7 @@
 
         <div class="col-lg-4">
             <div class="form-group d-flex justify-content-end">
-                <button class="btn btn-success export-btn" onclick="tableToExcel('statistic-table', 'statistika')">
+                <button class="btn btn-success export-btn" onclick="tableToExcel('all-answers-table', 'statistika')">
                     <i class="la la-file-export"></i>
                     {{ __('Export to excel') }}
                 </button>
@@ -77,42 +76,36 @@
 
         <!-- THE ACTUAL CONTENT -->
         <div class="col-lg-12">
-
             <div class="table-responsive card card-body p-0 mt-3">
-                <table class="table table-sm table-striped table-bordered font-sm" id="statistic-table">
+                <table class="table table-sm table-striped table-bordered font-sm" id="all-answers-table">
                     <thead>
                     <tr>
-                        <th rowspan="2">#</th>
-                        <th rowspan="2">{{ __('OTM') }}</th>
+                        <th>#</th>
+                        <th>{{ __('Organization') }}</th>
+                        <th>{{ __('University') }}</th>
+                        <th>{{ __('Survey') }}</th>
                         @foreach($questions as $question)
-                            <th class="border-bottom" colspan="{{ count($q[$question->id]) }}">
-                                {!! $question->content !!}
-                            </th>
-                        @endforeach
-                    </tr>
-                    <tr>
-                        @foreach($questions as $question)
-                            @foreach($q[$question->id] as $answer)
-                                <th>{{ $answer }}</th>
-                            @endforeach
+                            <th>{!! $question->content !!}</th>
                         @endforeach
                     </tr>
                     </thead>
 
                     <tbody>
-                    @foreach($result as $university => $i_questions)
+                    @foreach($entries as $index => $entry)
                         <tr>
-                            <td>{{ $loop->index + 1 }}</td>
-                            <td>{{ $university }}</td>
-                            @foreach($i_questions as $i_question)
-                                @foreach($i_question as $i_answer)
-                                    <td>{{ $i_answer }}</td>
-                                @endforeach
+                            <td>{{ $entries->firstItem() + $index }}</td>
+                            <td>{{ $entry->participant->name }}</td>
+                            <td>{{ $entry->university->name }}</td>
+                            <td>{{ $entry->survey->name }}</td>
+                            @foreach($questions as $question)
+                                <td>{{ $entries_pluck[$entry->id][$question->id] ?? '' }}</td>
                             @endforeach
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
+
+                {{ $entries->links() }}
             </div>
 
         </div>
@@ -123,7 +116,6 @@
 
 @section('after_scripts')
     <script type="text/javascript" src="{{ asset('js/tableToExcel.js') }}"></script>
-
     <script>
         $('.btn-search').click(function () {
             let url = '{{ url()->current() }}';
