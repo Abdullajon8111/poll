@@ -63,10 +63,10 @@
 
         <div class="col-lg-4">
             <div class="form-group d-flex justify-content-end">
-                <button class="btn btn-success export-btn" onclick="tableToExcel('all-answers-table', 'statistika')">
+                <a href="{{ route('admin.all-answers.export') }}" class="btn btn-success export-btn">
                     <i class="la la-file-export"></i>
                     {{ __('Export to excel') }}
-                </button>
+                </a>
             </div>
         </div>
     </div>
@@ -95,7 +95,7 @@
                         <tr>
                             <td>{{ $entries->firstItem() + $index }}</td>
                             <td>{{ $entry->participant->name }}</td>
-                            <td>{{ $entry->university->name }}</td>
+                            <td>{{ $entry->university->name ?? '' }}</td>
                             <td>{{ $entry->survey->name }}</td>
                             @foreach($questions as $question)
                                 <td>{{ $entries_pluck[$entry->id][$question->id] ?? '' }}</td>

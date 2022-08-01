@@ -47,4 +47,5 @@ Route::group([
 
     Route::get('statistics', 'StatisticsController@index')->name('admin.statistics.index');
     Route::get('all-answers', 'AllAnswerController@index')->name('admin.all-answers.index');
+    Route::get('all-answers/export', 'AllAnswerController@export')->name('admin.all-answers.export');
 }); // this should be the absolute last line of this file
