@@ -60,7 +60,7 @@
                                     <input id="captcha" class="form-control inputtext" type="text" name="captcha" size="30" maxlength="50" required placeholder="{{ __('Captcha') }}">
                                 </div>
                             </div>
-                            @error('captcha') <span style="color: red">{{ __('') }}</span> @enderror
+                            @error('captcha') <span style="color: red">{{ __('The captcha code is invalid') }}.</span> @enderror
                         </div>
 
                         <div class="form-group">

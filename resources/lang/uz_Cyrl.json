@@ -49,5 +49,7 @@
     "Stir": "СТИР",
     "Not found": "Топилмади",
     "Login": "Кириш",
-    "Home page": "Бош саҳифа"
+    "Home page": "Бош саҳифа",
+
+    "The captcha code is invalid": "Cаптча коди яроқсиз"
 }

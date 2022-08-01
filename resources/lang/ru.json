@@ -49,5 +49,7 @@
     "Stir": "ИНН",
     "Not found": "Не найден",
     "Login": "Вход",
-    "Home page": "Главная"
+    "Home page": "Главная",
+
+    "The captcha code is invalid": "Код капчи недействителен"
 }

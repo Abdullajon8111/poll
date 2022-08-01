@@ -49,5 +49,7 @@
     "Stir": "STIR",
     "Not found": "Topilmadi",
     "Login": "Kirish",
-    "Home page": "Bosh sahifa"
+    "Home page": "Bosh sahifa",
+
+    "The captcha code is invalid": "Captcha kodi yaroqsiz"
 }
