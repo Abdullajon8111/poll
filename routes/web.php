@@ -21,7 +21,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', 'login');
 
+require_once __DIR__ . '/captcha.php';
 require __DIR__ . '/auth.php';
+
 Route::redirect('/login', 'awoi/login');
 
 Route::get('change-language/{langcode}', [LanguageController::class, 'changeLang'])->name('change-lang');

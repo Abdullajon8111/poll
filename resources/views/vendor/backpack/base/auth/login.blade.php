@@ -48,7 +48,19 @@
                         </div>
 
                         <div class="form-group">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="captcha">
+                                        <span>{!! captcha_img() !!}</span>
+                                        <span><a type="button" class="btn btn-secondary reload" id="reload">&#x21bb;</a></span>
+                                    </div>
+                                </div>
 
+                                <div class="col-6">
+                                    <input id="captcha" class="form-control inputtext" type="text" name="captcha" size="30" maxlength="50" required placeholder="{{ __('Captcha') }}">
+                                </div>
+                            </div>
+                            @error('captcha') <span style="color: red">{{ __('') }}</span> @enderror
                         </div>
 
                         <div class="form-group">
@@ -72,5 +84,17 @@
 @endsection
 
 @section('after_scripts')
+    <script type="text/javascript">
+        $('#reload').click(function () {
+            $.ajax({
+                type: 'GET',
+                url: '/reload-captcha',
+                success: function (data) {
+                    $(".captcha span:first").html(data.captcha);
+                }
+            });
+        });
 
+    </script>
 @endsection
+

@@ -33,6 +33,6 @@ class SurveyController extends Controller
             ->whereSurveyId($survey->id)
             ->count();
 
-        return response()->json($entries_count < $survey->limit_per_participant);
+        return response()->json($entries_count < $survey->limit_per_participant || $survey->limit_per_participant == -1);
     }
 }
