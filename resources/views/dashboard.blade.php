@@ -52,9 +52,9 @@ $org = auth('org')->user();
                                         </div>
                                     </td>
                                     <td>
-                                        <a href="{{ $link['link'] }}" class="btn btn-info text-white">
+                                        <button class="btn btn-info univer_link_row text-white">
                                             <i class="fa fa-eye"></i>
-                                        </a>
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach
