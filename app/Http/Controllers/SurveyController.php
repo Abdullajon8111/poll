@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Entry;
+use App\Models\Organization;
 use App\Models\Survey;
 use App\Models\University;
 use Illuminate\Http\Request;
@@ -28,9 +29,13 @@ class SurveyController extends Controller
 
     public function check(University $university, Survey $survey)
     {
+        /** @var $org Organization */
+        $org = auth('org')->user();
+
         $entries_count = Entry::query()
             ->whereUniversityId($university->id)
             ->whereSurveyId($survey->id)
+            ->whereParticipantId($org->id)
             ->count();
 
         return $entries_count < $survey->limit_per_participant || $survey->limit_per_participant == -1;
