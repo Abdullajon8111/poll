@@ -169,6 +169,7 @@ class UniversityCrudController extends CrudController
     {
         CRUD::setValidation(UniversityRequest::class);
 
+        CRUD::field('category_id');
         CRUD::field('name');
         CRUD::field('slug');
         CRUD::field('enabled')->type('toggle');
