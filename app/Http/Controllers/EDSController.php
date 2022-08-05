@@ -53,7 +53,15 @@ class EDSController extends Controller
         $data = $response->json('data');
 
         if ($data && isset($data['inn'])) {
-            Log::info('callback response:', $data);
+            if (isset($data['eimzo_j_inn'])) {
+                $org = Organization::whereStir($data['eimzo_j_inn'])->first();
+                if ($org) {
+                    auth('org')->loginUsingId($org->id);
+
+                    return redirect()->route('dashboard');
+                }
+            }
+
             $org = Organization::whereStir($data['inn'])->first();
             if ($org) {
                 auth('org')->loginUsingId($org->id);
