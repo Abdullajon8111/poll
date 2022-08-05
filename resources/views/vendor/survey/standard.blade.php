@@ -32,7 +32,7 @@
     @endforeach
 
     @if($eligible)
-        <button class="btn btn-dark btn-block my-3">{{ __('Submit') }}</button>
+        <button id="survey-submit-button" class="btn btn-dark btn-block my-3">{{ __('Submit') }}</button>
     @endif
 @endif
 

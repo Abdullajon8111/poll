@@ -13,6 +13,8 @@
     <x-slot name="js">
         <script>
             $('#survey-form').submit(function (e) {
+                $('#survey-submit-button').attr('disabled', 'disabled')
+
                 e.preventDefault()
                 let data = $(this).serialize()
                 let url = $(this).attr('action')
