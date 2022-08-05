@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Organization;
 use Http;
+use Log;
 use Str;
 
 class EDSController extends Controller
@@ -49,9 +50,10 @@ class EDSController extends Controller
             $this->client_secret
         )->post("https://apiid.tdi.uz/oauth/token?grant_type=authorization_code&state={$state}&code={$code}");
 
-        $data =$response->json('data');
+        $data = $response->json('data');
 
         if ($data && isset($data['inn'])) {
+            Log::info('callback response:', $data);
             $org = Organization::whereStir($data['inn'])->first();
             if ($org) {
                 auth('org')->loginUsingId($org->id);
