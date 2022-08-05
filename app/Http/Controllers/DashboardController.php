@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Organization;
 use App\Models\Survey;
+use App\Models\University;
 use DB;
 
 class DashboardController extends Controller
@@ -20,7 +21,7 @@ class DashboardController extends Controller
         if ($survey) {
             /** @var $org Organization */
             $org = auth('org')->user();
-            $universities = $org->universities;
+            $universities = University::all();
 
             $entries_count = $org->entries()->select([
                 DB::raw('count(university_id) as count'),

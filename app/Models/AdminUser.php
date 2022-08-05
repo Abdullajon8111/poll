@@ -46,6 +46,7 @@ class AdminUser extends Authenticatable
 
     const OPERATOR_ROLE = 'operator';
     const ADMIN_ROLE = 'admin';
+    const ORG_SURVEY_MANAGER_ROLE = 'org-survey-manager';
 
     protected $fillable = [
         'name',

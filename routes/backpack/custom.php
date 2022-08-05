@@ -18,7 +18,7 @@ Route::group([
 ], function () { // custom admin routes
 
     Route::middleware(['role:admin,admin'])->group(function () {
-        Route::crud('survey', 'SurveyCrudController');
+
         Route::crud('section', 'SectionCrudController');
         Route::crud('question', 'QuestionCrudController');
 
@@ -28,9 +28,17 @@ Route::group([
         Route::crud('answer', 'AnswerCrudController');
 
         Route::crud('operator', 'OperatorCrudController');
+        Route::crud('separator', 'SeparatorCrudController');
+    });
+
+    Route::middleware(['role:org-survey-manager|admin,admin'])->group(function () {
+        Route::crud('survey', 'SurveyCrudController');
 
         Route::crud('organization', 'OrganizationCrudController');
-        Route::crud('separator', 'SeparatorCrudController');
+        Route::crud('org-category', 'OrgCategoryCrudController');
+
+        Route::crud('university', 'UniversityCrudController');
+        Route::crud('univer-category', 'UniverCategoryCrudController');
     });
 
     Route::crud('university', 'UniversityCrudController');

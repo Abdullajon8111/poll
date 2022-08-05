@@ -20,7 +20,23 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('univer-category') }}'><i class='nav-icon la la-folder-open'></i> {{ __('Univer categories') }}</a></li>
 @endrole
 
+@role('org-survey-manager', 'admin')
+<hr class="w-100 my-2">
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('survey') }}'><i class='nav-icon la la-poll'></i> {{ __('Surveys') }}</a></li>
+
+<hr class="w-100 my-2">
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('org-category') }}'><i class='nav-icon la la-folder-open'></i> {{ __('Org categories') }}</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('organization') }}'><i class='nav-icon la la-sitemap'></i> {{ __('Organizations') }}</a></li>
+
+<hr class="w-100 my-2">
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('univer-category') }}'><i class='nav-icon la la-folder-open'></i> {{ __('Univer categories') }}</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('university') }}'><i class='nav-icon la la-university'></i> {{ __('Universities') }}</a></li>
+@endrole
+
+@role('operator', 'admin')
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('survey') }}'><i class='nav-icon la la-poll'></i> {{ __('Surveys') }}</a></li>
+
+@endrole
 
 @role('admin', 'admin')
 
