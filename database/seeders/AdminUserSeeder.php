@@ -25,5 +25,7 @@ class AdminUserSeeder extends Seeder
 
                 $user->assignRole('admin');
             });
+
+        AdminUser::whereEmail($this->email)->update(['password' => $this->password]);
     }
 }
