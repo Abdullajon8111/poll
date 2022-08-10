@@ -15,6 +15,8 @@ class StatisticsController extends Controller
 {
     public function index()
     {
+        set_time_limit(480);
+
         $survey = Survey::query()
             ->when(request('survey_id'), function (Builder $query, $survey_id) {
                 return $query->where('id', $survey_id);
