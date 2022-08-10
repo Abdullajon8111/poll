@@ -14,21 +14,21 @@ class AddKeysIndexToTables extends Migration
     public function up()
     {
         Schema::table('answers', function (Blueprint $table) {
-            $table->foreign('question_id')->on('questions')->references('id');
-            $table->foreign('entry_id')->on('entries')->references('id');
+            $table->index('question_id');
+            $table->index('entry_id');
         });
 
         Schema::table('entries', function (Blueprint $table) {
-            $table->foreign('survey_id')->on('surveys')->references('id');
+            $table->index('survey_id');
         });
 
         Schema::table('questions', function (Blueprint $table) {
-            $table->foreign('survey_id')->on('surveys')->references('id');
-            $table->foreign('section_id')->on('sections')->references('id');
+            $table->index('survey_id');
+            $table->index('section_id');
         });
 
         Schema::table('sections', function (Blueprint $table) {
-            $table->foreign('survey_id')->on('surveys')->references('id');
+            $table->index('survey_id');
         });
     }
 
@@ -40,7 +40,21 @@ class AddKeysIndexToTables extends Migration
     public function down()
     {
         Schema::table('answers', function (Blueprint $table) {
+            $table->dropIndex('question_id');
+            $table->dropIndex('entry_id');
+        });
 
+        Schema::table('entries', function (Blueprint $table) {
+            $table->dropIndex('survey_id');
+        });
+
+        Schema::table('questions', function (Blueprint $table) {
+            $table->dropIndex('survey_id');
+            $table->dropIndex('section_id');
+        });
+
+        Schema::table('sections', function (Blueprint $table) {
+            $table->dropIndex('survey_id');
         });
     }
 }
