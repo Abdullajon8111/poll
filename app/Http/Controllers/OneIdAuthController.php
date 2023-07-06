@@ -57,17 +57,17 @@ class OneIdAuthController extends Controller
 
         $req = \Http::post($this->one_id_url, $data);
 
-        if ($req->clientError()) {
-            throw new \Exception('One ID client error');
-        }
-
-        if ($req->serverError()) {
-            throw new \Exception('One ID server error');
-        }
-
-        if (!$req->json('access_token')) {
-            throw new \Exception('One ID access token not found');
-        }
+//        if ($req->clientError()) {
+//            throw new \Exception('One ID client error');
+//        }
+//
+//        if ($req->serverError()) {
+//            throw new \Exception('One ID server error');
+//        }
+//
+//        if (!$req->json('access_token')) {
+//            throw new \Exception('One ID access token not found');
+//        }
 
         $access_token = $req->json('access_token');
         $scope = $req->json('scope', $this->scope);
