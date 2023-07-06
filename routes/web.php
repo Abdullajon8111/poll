@@ -38,7 +38,7 @@ if (env('APP_ENV') == 'prod' and env('OAUTH2_TYPE') == 'TDI_ID') {
 
 if (env('APP_ENV') == 'prod' and env('OAUTH2_TYPE') == 'ONE_ID') {
     Route::redirect('awoi/login', '/one-id/login');
-    Route::view('one-id/login', 'eds.login')->name('eds.login.index');
+    Route::view('one-id/login', 'one-id.login')->name('one-id.login.index');
     Route::get('one-id/login/redirect', [OneIdAuthController::class, 'redirect'])->name('one-id.login.redirect');
     Route::get('callback/one-id', [OneIdAuthController::class, 'callback'])->name('one-id.login.callback');
 }
