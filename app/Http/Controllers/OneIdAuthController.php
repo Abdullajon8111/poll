@@ -47,8 +47,6 @@ class OneIdAuthController extends Controller
         $code = request('code');
         $state = request('state');
 
-        dump($code);
-
         $data = [
             'grant_type' => 'one_authorization_code',
             'client_id' => $this->client_id,
@@ -59,19 +57,17 @@ class OneIdAuthController extends Controller
 
         $req = \Http::asForm()->post($this->one_id_url, $data);
 
-//        if ($req->clientError()) {
-//            throw new \Exception('One ID client error');
-//        }
-//
-//        if ($req->serverError()) {
-//            throw new \Exception('One ID server error');
-//        }
-//
-//        if (!$req->json('access_token')) {
-//            throw new \Exception('One ID access token not found');
-//        }
+        if ($req->clientError()) {
+            throw new \Exception('One ID client error');
+        }
 
-        dump($req->body());
+        if ($req->serverError()) {
+            throw new \Exception('One ID server error');
+        }
+
+        if (!$req->json('access_token')) {
+            throw new \Exception('One ID access token not found');
+        }
 
         $access_token = $req->json('access_token');
         $scope = $req->json('scope', $this->scope);
@@ -86,7 +82,7 @@ class OneIdAuthController extends Controller
 
         $req = \Http::asForm()->post($this->one_id_url, $data);
 
-        dd($req->body());
+        dd($req->json());
     }
 
     public function authCallback(\Request $request)
