@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EDSController;
 use App\Http\Controllers\EntryController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\OneIdAuthController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\SurveyEntryController;
 use Illuminate\Support\Facades\Route;
@@ -28,11 +29,18 @@ Route::redirect('/login', 'awoi/login');
 
 Route::get('change-language/{langcode}', [LanguageController::class, 'changeLang'])->name('change-lang');
 
-if (env('APP_ENV') == 'prod') {
+if (env('APP_ENV') == 'prod' and env('OAUTH2_TYPE') == 'TDI_ID') {
     Route::redirect('awoi/login', '/eds/login');
     Route::view('eds/login', 'eds.login')->name('eds.login.index');
     Route::get('eds/login/redirect', [EDSController::class, 'redirect'])->name('eds.login.redirect');
     Route::get('callback/id-tdi', [EDSController::class, 'callback'])->name('eds.login.callback');
+}
+
+if (env('APP_ENV') == 'prod' and env('OAUTH2_TYPE') == 'ONE_ID') {
+    Route::redirect('awoi/login', '/one-id/login');
+    Route::view('one-id/login', 'eds.login')->name('eds.login.index');
+    Route::get('one-id/login/redirect', [OneIdAuthController::class, 'redirect'])->name('one-id.login.redirect');
+    Route::get('callback/one-id', [OneIdAuthController::class, 'callback'])->name('one-id.login.callback');
 }
 
 Route::middleware(['auth:org', 'language'])->group(function () {
