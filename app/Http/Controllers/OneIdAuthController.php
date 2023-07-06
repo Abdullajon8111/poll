@@ -27,7 +27,8 @@ class OneIdAuthController extends Controller
             'response_type' => 'one_code',
             'client_id' => $this->client_id,
             'state' => $this->state,
-            'redirect_uri' => $this->redirect_url
+            'redirect_uri' => $this->redirect_url,
+            'scope' => 'management_edu_process_lyceums'
         ];
 
         $query = http_build_query($data);
