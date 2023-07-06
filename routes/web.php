@@ -41,6 +41,7 @@ if (env('APP_ENV') == 'prod' and env('OAUTH2_TYPE') == 'ONE_ID') {
     Route::view('one-id/login', 'one-id.login')->name('one-id.login.index');
     Route::get('one-id/login/redirect', [OneIdAuthController::class, 'redirect'])->name('one-id.login.redirect');
     Route::get('callback/one-id', [OneIdAuthController::class, 'callback'])->name('one-id.login.callback');
+    Route::get('callback/one-id/auth', [OneIdAuthController::class, 'authCallback'])->name('one-id.login.auth-callback');
 }
 
 Route::middleware(['auth:org', 'language'])->group(function () {
