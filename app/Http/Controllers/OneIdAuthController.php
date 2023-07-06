@@ -57,7 +57,7 @@ class OneIdAuthController extends Controller
             'redirect_uri' => route('one-id.login.auth-callback')
         ];
 
-        $req = \Http::post($this->one_id_url, $data);
+        $req = \Http::asForm()->post($this->one_id_url, $data);
 
 //        if ($req->clientError()) {
 //            throw new \Exception('One ID client error');
@@ -84,7 +84,7 @@ class OneIdAuthController extends Controller
             'scope' => $scope
         ];
 
-        $req = \Http::post($this->one_id_url, $data);
+        $req = \Http::asForm()->post($this->one_id_url, $data);
 
         dd($req->body());
     }
