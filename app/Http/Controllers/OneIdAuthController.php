@@ -69,6 +69,8 @@ class OneIdAuthController extends Controller
 //            throw new \Exception('One ID access token not found');
 //        }
 
+        dump($req->body());
+
         $access_token = $req->json('access_token');
         $scope = $req->json('scope', $this->scope);
 
@@ -82,7 +84,7 @@ class OneIdAuthController extends Controller
 
         $req = \Http::post($this->one_id_url, $data);
 
-        dd($req->json());
+        dd($req->body());
     }
 
     public function authCallback(\Request $request)
