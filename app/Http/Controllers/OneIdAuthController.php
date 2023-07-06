@@ -47,6 +47,8 @@ class OneIdAuthController extends Controller
         $code = request('code');
         $state = request('state');
 
+        dump($code);
+
         $data = [
             'grant_type' => 'one_authorization_code',
             'client_id' => $this->client_id,
