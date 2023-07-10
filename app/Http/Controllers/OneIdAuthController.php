@@ -103,6 +103,7 @@ class OneIdAuthController extends Controller
             return redirect()->route('one-id.error-org');
         }
 
+        auth('org')->loginUsingId($org->id);
         return redirect()->route('dashboard');
     }
 
