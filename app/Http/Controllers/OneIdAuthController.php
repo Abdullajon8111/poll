@@ -94,13 +94,13 @@ class OneIdAuthController extends Controller
         $res = $req->json();
 
         if (!isset($res['legal_info'][0]['tin'])) {
-            return view('eds.error-inn');
+            return redirect()->route('one-id.error-inn');
         }
 
         $tin = $res['legal_info'][0]['tin'];
         $org = Organization::whereStir($tin)->first();
         if (!$org) {
-            return view('eds.error-org');
+            return redirect()->route('one-id.error-org');
         }
 
         return redirect()->route('dashboard');
