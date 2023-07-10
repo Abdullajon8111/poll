@@ -107,8 +107,10 @@ class OneIdAuthController extends Controller
         return redirect()->route('dashboard');
     }
 
-    public function authCallback(Request $request)
+    public function logout(Request $request): \Illuminate\Http\RedirectResponse
     {
+        auth('org')->logout();
 
+        return redirect()->route('one-id.login.index');
     }
 }

@@ -47,10 +47,10 @@
                         </div>
                     </div>
 
-                    <button class="btn btn-link" onclick="event.preventDefault(); $('#log-out-form').submit();">
+                    <a href="{{ route('one-id.logout') }}" class="btn btn-link">
                         <i class="fa fa-sign-out"></i>
                         {{ __('Log Out') }}
-                    </button>
+                    </a>
                 @endauth
             </ul>
         </div>
