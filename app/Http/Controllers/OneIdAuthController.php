@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Organization;
+use Exception;
+use Http;
+use Request;
 use Str;
+use Throwable;
 
 class OneIdAuthController extends Controller
 {
@@ -25,10 +30,13 @@ class OneIdAuthController extends Controller
 
     public function redirect()
     {
+        $state = Str::random(6);
+        session(compact('state'));
+
         $data = [
             'response_type' => 'one_code',
             'client_id' => $this->client_id,
-            'state' => $this->state,
+            'state' => $state,
             'redirect_uri' => $this->redirect_url,
             'scope' => $this->scope
         ];
@@ -40,12 +48,14 @@ class OneIdAuthController extends Controller
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function callback()
     {
         $code = request('code');
         $state = request('state');
+
+        abort_if($state != session('state'), 401);
 
         $data = [
             'grant_type' => 'one_authorization_code',
@@ -55,18 +65,18 @@ class OneIdAuthController extends Controller
             'redirect_uri' => route('one-id.login.auth-callback')
         ];
 
-        $req = \Http::asForm()->post($this->one_id_url, $data);
+        $req = Http::asForm()->post($this->one_id_url, $data);
 
         if ($req->clientError()) {
-            throw new \Exception('One ID client error');
+            throw new Exception('One ID client error');
         }
 
         if ($req->serverError()) {
-            throw new \Exception('One ID server error');
+            throw new Exception('One ID server error');
         }
 
         if (!$req->json('access_token')) {
-            throw new \Exception('One ID access token not found');
+            throw new Exception('One ID access token not found');
         }
 
         $access_token = $req->json('access_token');
@@ -80,12 +90,23 @@ class OneIdAuthController extends Controller
             'scope' => $scope
         ];
 
-        $req = \Http::asForm()->post($this->one_id_url, $data);
+        $req = Http::asForm()->post($this->one_id_url, $data);
+        $res = $req->json();
 
-        dd($req->json());
+        if (!isset($res['legal_info'][0]['tin'])) {
+            return view('eds.error-inn');
+        }
+
+        $tin = $res['legal_info'][0]['tin'];
+        $org = Organization::whereStir($tin)->first();
+        if (!$org) {
+            return view('eds.error-org');
+        }
+
+        return redirect()->route('dashboard');
     }
 
-    public function authCallback(\Request $request)
+    public function authCallback(Request $request)
     {
 
     }
