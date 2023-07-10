@@ -71,9 +71,9 @@
 
                 <div class="col-lg-6 text-right">
 
-                    <h4 class="mb-0">Inspeksiya telefoni</h4>
-                    <a class="h3 font-weight-bold" href="tel:+998712310753">
-                        +998 71 231-07-53
+                    <h4 class="mb-0">{{ __('Vazirlik telefoni') }}</h4>
+                    <a class="h3 font-weight-bold" href="tel:+998712306464">
+                        +998 71-230-64-64
                     </a>
                 </div>
 
