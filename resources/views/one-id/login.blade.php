@@ -5,8 +5,8 @@
                 <x-application-logo width="82" />
                 <h3 class="text-center mt-3">
                     O‘ZBEKISTON RESPUBLIKASI <br>
-                    OLIY TA’LIM, FAN VA INNOVATSIYALAR VAZIRLIGI <br>
-                    SO‘ROVNOMA TIZIMI
+                    OLIY TA’LIM, FAN VA INNOVATSIYALAR <br>
+                    VAZIRLIGINING SO‘ROVNOMA TIZIMI
                 </h3>
             </div>
         </x-slot>

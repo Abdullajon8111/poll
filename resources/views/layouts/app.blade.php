@@ -40,8 +40,8 @@
                 <img class="ml-3" src="{{ asset('img/flag.png') }}" alt="flag" height="80">
                 <h6 class="ml-3 my-auto">
                     O‘ZBEKISTON RESPUBLIKASI <br>
-                    OLIY TA’LIM, FAN VA INNOVATSIYALAR VAZIRLIGI <br>
-                    SO‘ROVNOMA TIZIMI
+                    OLIY TA’LIM, FAN VA INNOVATSIYALAR <br>
+                    VAZIRLIGINING SO‘ROVNOMA TIZIMI
                 </h6>
             </div>
 
