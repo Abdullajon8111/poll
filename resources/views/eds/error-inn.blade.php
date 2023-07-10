@@ -12,7 +12,7 @@
                 {{ __('Stir') }} {{ __('Not found') }}
             </div>
 
-            <a href="{{ route('eds.login.redirect') ?? route('one-id.login.redirect') }}" class="btn btn-info btn-block mt-3">
+            <a href="{{ env('OAUTH2_TYPE') == 'ONE_ID' ? route('one-id.login.redirect') : route('eds.login.redirect') }}" class="btn btn-info btn-block mt-3">
                 <i class="la la-key"></i>
                 {{ __('Login') }}
             </a>
