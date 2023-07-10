@@ -39,10 +39,8 @@
                 <img src="{{ asset('img/gerb.png') }}" alt="gerb" height="80">
                 <img class="ml-3" src="{{ asset('img/flag.png') }}" alt="flag" height="80">
                 <h6 class="ml-3 my-auto">
-                    O‘ZBЕKISTON RЕSPUBLIKASI <br>
-                    VAZIRLAR MAHKAMASI HUZURIDAGI <br>
-                    TA’LIM SIFATINI NAZORAT QILISH <br>
-                    DAVLAT INSPЕKSIYASINING <br>
+                    O‘ZBEKISTON RESPUBLIKASI <br>
+                    OLIY TA’LIM, FAN VA INNOVATSIYALAR VAZIRLIGI <br>
                     SO‘ROVNOMA TIZIMI
                 </h6>
             </div>

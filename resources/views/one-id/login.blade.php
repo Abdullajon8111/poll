@@ -4,10 +4,8 @@
             <div class="mb-3 text-center">
                 <x-application-logo width="82" />
                 <h3 class="text-center mt-3">
-                    O‘ZBЕKISTON RЕSPUBLIKASI <br>
-                    VAZIRLAR MAHKAMASI HUZURIDAGI <br>
-                    TA’LIM SIFATINI NAZORAT QILISH <br>
-                    DAVLAT INSPЕKSIYASINING <br>
+                    O‘ZBEKISTON RESPUBLIKASI <br>
+                    OLIY TA’LIM, FAN VA INNOVATSIYALAR VAZIRLIGI <br>
                     SO‘ROVNOMA TIZIMI
                 </h3>
             </div>
