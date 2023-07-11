@@ -8,6 +8,7 @@ use App\Models\Organization;
 use App\Models\Survey;
 use App\Models\University;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
+use Backpack\CRUD\app\Http\Controllers\Operations\BulkDeleteOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
@@ -20,6 +21,7 @@ class EntryCrudController extends CrudController
 //    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
 //    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use DeleteOperation;
+    use BulkDeleteOperation;
 
 //    use ShowOperation;
 
