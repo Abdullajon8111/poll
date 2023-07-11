@@ -36,7 +36,7 @@
     <div class="row py-3">
         <div class="col-lg-6">
             <div class="d-flex">
-                <img src="{{ asset('img/gerb.png') }}" alt="gerb" height="80">
+                <img src="{{ asset('img/logo.png') }}" alt="gerb" height="80">
                 <img class="ml-3" src="{{ asset('img/flag.png') }}" alt="flag" height="80">
                 <h6 class="ml-3 my-auto">
                     O‘ZBEKISTON RESPUBLIKASI <br>
