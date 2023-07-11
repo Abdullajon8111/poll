@@ -9,7 +9,7 @@
         <div class="card-body">
             <div class="alert alert-danger text-center">
                 <i class="la la-key"></i>
-                {{ __('Organization') }} {{ __('Not fount') }}
+                {{ __('Organization') }} {{ __('Not found') }}
             </div>
 
             <a href="{{ route('one-id.login.redirect') }}" class="btn btn-info btn-block mt-3">
