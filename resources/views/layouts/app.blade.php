@@ -51,19 +51,19 @@
             <div class="row">
                 <div class="col-lg-6 d-flex justify-content-end">
                     <div class="d-flex justify-content-end align-items-end mb-3">
-                        <a href="https://t.me/uztdi" class="btn text-white bg-twitter social rounded-circle mr-2">
+                        <a href="https://t.me/eduuz" class="btn text-white bg-twitter social rounded-circle mr-2">
                             <i class="fa fa-telegram"></i>
                         </a>
 
-                        <a href="https://www.facebook.com/uztdi/" class="btn text-white bg-facebook social rounded-circle mr-2" style="width: 40.41px">
+                        <a href="https://www.facebook.com/eduuzofficial/" class="btn text-white bg-facebook social rounded-circle mr-2" style="width: 40.41px">
                             <i class="fa fa-facebook"></i>
                         </a>
 
-                        <a href="https://www.instagram.com/uztdi/" class="btn text-white bg-pink social rounded-circle mr-2">
+                        <a href="https://www.instagram.com/edu.uz/" class="btn text-white bg-pink social rounded-circle mr-2">
                             <i class="fa fa-instagram"></i>
                         </a>
 
-                        <a href="https://www.youtube.com/channel/UCmHYafmlREl9v__cBUJAu6g" class="btn text-white bg-youtube social rounded-circle mr-2">
+                        <a href="https://www.youtube.com/c/eduuz" class="btn text-white bg-youtube social rounded-circle mr-2">
                             <i class="fa fa-youtube-play"></i>
                         </a>
                     </div>
