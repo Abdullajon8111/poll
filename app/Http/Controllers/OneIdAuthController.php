@@ -116,6 +116,6 @@ class OneIdAuthController extends Controller
     {
         auth('org')->logout();
 
-        return redirect()->route('one-id.login.index');
+        return redirect('/');
     }
 }

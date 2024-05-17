@@ -45,9 +45,9 @@ if (env('APP_ENV') == 'prod' and env('OAUTH2_TYPE') == 'ONE_ID') {
 
     Route::view('one-id/error-inn', 'eds.error-inn')->name('one-id.error-inn');
     Route::view('one-id/error-org', 'eds.error-org')->name('one-id.error-org');
-
-    Route::get('logout', [OneIdAuthController::class, 'logout'])->name('one-id.logout');
 }
+
+Route::get('logout', [OneIdAuthController::class, 'logout'])->name('one-id.logout');
 
 Route::middleware(['auth:org', 'language'])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
